@@ -15,6 +15,7 @@ class HomeScreen extends StatelessWidget {
           children: <Widget>[
             ElevatedButton(
               onPressed: () {
+                debugDumpRenderTree();
                 Navigator.pushNamed(context, '/first');
               },
               child: const Text('Go to First Screen'),
@@ -27,6 +28,7 @@ class HomeScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
+                 debugDumpApp();
                 Navigator.pushNamed(context, '/third');
               },
               child: const Text('Go to Third Screen'),
