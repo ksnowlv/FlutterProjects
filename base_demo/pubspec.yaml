@@ -65,15 +65,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
 
   assets:
-    - images/home.png
-    - images/study.png
-    - images/mine.png
-    - images/2.0x/home.png
-    - images/2.0x/study.png
-    - images/2.0x/mine.png
-    - images/3.0x/home.png
-    - images/3.0x/study.png
-    - images/3.0x/mine.png
+    - images/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

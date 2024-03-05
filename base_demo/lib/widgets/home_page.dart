@@ -45,15 +45,15 @@ class _HomePageState extends State<HomePage> {
         onTap: _onTabTapped,
         items: [
            BottomNavigationBarItem(
-            icon: Image.asset('images/home.png', width: 40),
+            icon: Image.asset('images/home.png', width: 60),
             label: '首页',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset('images/study.png', width: 40),
+            icon: Image.asset('images/study.png', width: 60),
             label: '学习',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset('images/mine.png', width: 40),
+            icon: Image.asset('images/mine.png', width: 60),
             label: '我的',
           ),
         ],
