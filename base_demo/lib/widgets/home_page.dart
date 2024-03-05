@@ -58,9 +58,28 @@ class _HomePageState extends State<HomePage> {
 }
 
 class PageOne extends StatelessWidget {
+
   const PageOne({super.key, required this.title});
 
+
   final String title;
+
+  void _onButtonPressed(BuildContext context) async {
+    final result = await Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => const DetailPage(
+                  data: 'Hello from PageOne',
+                )));
+
+    if (!context.mounted) {
+      return;
+    }
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('receive result:$result')),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,13 +89,8 @@ class PageOne extends StatelessWidget {
         children: <Widget>[
           const Text('This is Page one111'),
           ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const DetailPage(
-                            data: 'Hello from PageOne',
-                          )));
+            onPressed: ()  {
+              _onButtonPressed(context);
             },
             child: const Text('go go detail page'),
           ),

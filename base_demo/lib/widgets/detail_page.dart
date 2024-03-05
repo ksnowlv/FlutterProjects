@@ -22,7 +22,7 @@ const DetailPage({ super.key, required this.data});
           ElevatedButton(
             onPressed: () {
 
-              Navigator.pop(context);
+              Navigator.pop(context, 'Hello from DetailsPage');
 
             } , 
             child: const Text('go back'))
