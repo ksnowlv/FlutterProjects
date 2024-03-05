@@ -1,5 +1,7 @@
 import 'package:base_demo/common/logger.dart';
 import 'package:base_demo/widgets/home_page.dart';
+import 'package:base_demo/widgets/router.dart';
+import 'package:base_demo/widgets/routes_pages.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -35,7 +37,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: const MyHomePage(title: 'Flutter Base Demo Home Page'),
-      home: const HomePage(title: "My home page"),
+      // home: const HomePage(title: "My home page"),
+      home: const HomeScreen(),
+      initialRoute: '/',
+      onGenerateRoute: XRouter.generateRoute,
     );
   }
 }
