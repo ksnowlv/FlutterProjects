@@ -1,3 +1,4 @@
+import 'package:base_demo/widgets/custom_render_object_widget.dart';
 import 'package:base_demo/widgets/detail_page.dart';
 import 'package:flutter/material.dart';
 
@@ -94,6 +95,7 @@ class PageOne extends StatelessWidget {
             },
             child: const Text('go go detail page'),
           ),
+          const CustomRenderObjectWidget(),
         ],
       ),
     );

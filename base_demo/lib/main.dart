@@ -37,8 +37,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: const MyHomePage(title: 'Flutter Base Demo Home Page'),
-      // home: const HomePage(title: "My home page"),
-      home: const HomeScreen(),
+       home: const HomePage(title: "My home page"),
+      // home: const HomeScreen(),
       initialRoute: '/',
       onGenerateRoute: XRouter.generateRoute,
     );
