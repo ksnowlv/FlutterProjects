@@ -33,12 +33,6 @@ class CustomRenderObject extends RenderBox {
     markNeedsPaint();
   }
 
-  @override
-  void performLayout() {
-    super.performLayout();
-    size = constraints.biggest;
-  }
-
 
   @override
   void paint(PaintingContext context, Offset offset) {
@@ -54,11 +48,11 @@ class CustomRenderObject extends RenderBox {
       text: textSpan,
       textDirection: TextDirection.ltr,
       maxLines: 3, // 设置最大行数，根据需要更改
-      textAlign: TextAlign.center, // 设置文本对齐方式为居中
-      textWidthBasis: TextWidthBasis.longestLine, // 根据最长行的宽度确定实际文本宽度
+      textAlign: TextAlign.left, 
     );
 
     textPainter.layout(minWidth: 0, maxWidth: size.width);
+    //文本垂直居中，如果不需要，则纵向yOffset可为0；
     final yOffset = (size.height - textPainter.height) / 2;
     textPainter.paint(context.canvas, offset + Offset(0, yOffset));
   }
