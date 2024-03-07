@@ -1,6 +1,7 @@
 import 'package:base_demo/widgets/custom_render_object_widget.dart';
 import 'package:base_demo/widgets/detail_page.dart';
 import 'package:base_demo/widgets/goods_list_widget.dart';
+import 'package:base_demo/widgets/grid_view_widget.dart';
 import 'package:base_demo/widgets/single_child_scrollview_page.dart';
 import 'package:flutter/material.dart';
 
@@ -61,9 +62,7 @@ class _HomePageState extends State<HomePage> {
 }
 
 class PageOne extends StatelessWidget {
-
   const PageOne({super.key, required this.title});
-
 
   final String title;
 
@@ -92,17 +91,19 @@ class PageOne extends StatelessWidget {
         children: <Widget>[
           const Text('This is Page one111'),
           ElevatedButton(
-            onPressed: ()  {
+            onPressed: () {
               _onButtonPressed(context);
             },
             child: const Text('go go detail page'),
           ),
-        //  const CustomRenderObjectWidget(),
-         //const XSingleChildScrollView(),
-           const Expanded(
-                 child: GoodsListWidget(),  // 在这里嵌入MyListViewWidget
-               ),
-    
+          //  const CustomRenderObjectWidget(),
+          //const XSingleChildScrollView(),
+          const Expanded(
+            child: GoodsListWidget(), // 在这里嵌入MyListViewWidget
+          ),
+          const Expanded(
+            child: GridViewWidget(),
+          )
         ],
       ),
     );
