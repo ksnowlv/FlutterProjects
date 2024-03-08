@@ -1,6 +1,7 @@
 import 'package:base_demo/common/logger.dart';
 import 'package:base_demo/widgets/home_page.dart';
 import 'package:base_demo/widgets/main_tabbarview.dart';
+import 'package:base_demo/widgets/mynestedscrollview_page.dart';
 import 'package:base_demo/widgets/order_list_page.dart';
 import 'package:base_demo/widgets/router.dart';
 import 'package:base_demo/widgets/routes_pages.dart';
@@ -44,7 +45,8 @@ class MyApp extends StatelessWidget {
       // home: const HomeScreen(),
       // home: ScrollControllerPage(),
       //home: const OrderListPage(),
-      home: const MainTabBarView(),
+      // home: const MainTabBarView(),
+      home: const MyNestedScrollViewPage(),
       initialRoute: '/',
       onGenerateRoute: XRouter.generateRoute,
     );
