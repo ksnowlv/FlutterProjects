@@ -2,6 +2,8 @@ import 'package:base_demo/common/logger.dart';
 import 'package:flutter/material.dart';
 
 class ScrollControllerPage extends StatefulWidget {
+  const ScrollControllerPage({super.key});
+
   @override
   ScrollControllerPageState createState() {
     return ScrollControllerPageState();

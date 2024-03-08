@@ -1,3 +1,4 @@
+import 'package:base_demo/widgets/animated_list_widget.dart';
 import 'package:base_demo/widgets/custom_render_object_widget.dart';
 import 'package:base_demo/widgets/detail_page.dart';
 import 'package:base_demo/widgets/goods_list_widget.dart';
@@ -98,12 +99,13 @@ class PageOne extends StatelessWidget {
           ),
           //  const CustomRenderObjectWidget(),
           //const XSingleChildScrollView(),
-          const Expanded(
-            child: GoodsListWidget(), // 在这里嵌入MyListViewWidget
-          ),
-          const Expanded(
-            child: GridViewWidget(),
-          )
+          // const Expanded(
+          //   child: GoodsListWidget(), // 在这里嵌入MyListViewWidget
+          // ),
+          // const Expanded(
+          //   child: GridViewWidget(),
+          // ),
+          const Expanded(child: AnimatedListWidget()),
         ],
       ),
     );
