@@ -1,6 +1,7 @@
 import 'package:base_demo/widgets/animated_list_widget.dart';
 import 'package:base_demo/widgets/custom_render_object_widget.dart';
 import 'package:base_demo/widgets/detail_page.dart';
+import 'package:base_demo/widgets/event_bus_widget.dart';
 import 'package:base_demo/widgets/goods_list_widget.dart';
 import 'package:base_demo/widgets/grid_view_widget.dart';
 import 'package:base_demo/widgets/single_child_scrollview_page.dart';
@@ -106,6 +107,7 @@ class PageOne extends StatelessWidget {
           //   child: GridViewWidget(),
           // ),
           const Expanded(child: AnimatedListWidget()),
+          const EventBusWidget(),
         ],
       ),
     );
