@@ -1,5 +1,6 @@
 import 'package:base_demo/common/logger.dart';
 import 'package:base_demo/widgets/list_view_with_selectable_items.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DialogPage extends StatefulWidget {
@@ -12,6 +13,14 @@ class DialogPage extends StatefulWidget {
 class DialogPageState extends State<DialogPage> {
   String? selectedCity;
   final list = ['北京', '天津', '上海', '重庆', '深圳', '厦门'];
+
+  late DateTime _selectedDate;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedDate = DateTime.now();
+  }
 
   Future<void> onShowTipsDialog(BuildContext context) async {
     bool? result = await showDialog<bool>(
@@ -119,21 +128,21 @@ class DialogPageState extends State<DialogPage> {
                       itemCount: list.length,
                       itemBuilder: (context, index) {
                         return Container(
-                          color: selectedCity == list[index] ? Colors.red : Colors.white,
-                          child:  ListTile(
-                          title: Text(
-                            list[index],
-                            textAlign: TextAlign.center,
-                          ),
-                        
-                          onTap: () {
-                            setState(() {
-                              selectedCity = list[index];
-                              XLogger.getLogger().d('您选择了$selectedCity');
-                            });
-                          },
-                          tileColor: Colors.red
-                        ),
+                          color: selectedCity == list[index]
+                              ? Colors.red
+                              : Colors.white,
+                          child: ListTile(
+                              title: Text(
+                                list[index],
+                                textAlign: TextAlign.center,
+                              ),
+                              onTap: () {
+                                setState(() {
+                                  selectedCity = list[index];
+                                  XLogger.getLogger().d('您选择了$selectedCity');
+                                });
+                              },
+                              tileColor: Colors.red),
                         );
                       },
                     ),
@@ -165,6 +174,101 @@ class DialogPageState extends State<DialogPage> {
         });
       }
     });
+  }
+
+  void _showLoadingDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return const AlertDialog(
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CircularProgressIndicator(),
+              Padding(
+                padding: EdgeInsets.only(top: 20),
+                child: Text('正在加载，请稍候...'),
+              )
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _showDatePicker() async {
+    var date = DateTime.now();
+    var selectedDate = await showDatePicker(
+      context: context,
+      initialDate: date,
+      firstDate: date,
+      lastDate: date.add(
+        //未来30天可选
+        const Duration(days: 30),
+      ),
+    );
+    if (selectedDate != null) {
+      XLogger.getLogger().d('您选择的日期是: $selectedDate');
+      // 在这里可以对所选的日期进行需要的处理
+    } else {
+      // 用户取消了日期选择
+      XLogger.getLogger().d('用户取消了日期选择');
+    }
+  }
+
+
+  void _showDatePickeriOS() {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          height: 300,
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CupertinoButton(
+                    child: const Text('取消'),
+                    onPressed: () {
+                      XLogger.getLogger().d('用户取消了日期选择');
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  CupertinoButton(
+                    child: const Text('确认'),
+                    onPressed: () {
+                      // 在这里处理确认按钮的点击事件
+                      // 例如，可以处理选中的日期
+                      XLogger.getLogger().d('您选择的日期是: $_selectedDate');
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              Expanded(
+                child: CupertinoDatePicker(
+                  mode: CupertinoDatePickerMode.date,
+                  initialDateTime: _selectedDate,
+                  maximumDate: DateTime.now().add(const Duration(days: 30)),
+                  minimumYear: 2010,
+                  maximumYear: 2030,
+                  onDateTimeChanged: (DateTime newDate) {
+                    setState(() {
+                      _selectedDate = newDate;
+                    });
+                  },
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -199,13 +303,23 @@ class DialogPageState extends State<DialogPage> {
                 onPressed: () {
                   _showModalBottomSheet(context);
                 },
-                child: const Text('showModalBottomSheet底部菜单列表')
-                ),
-
-              const Expanded(
-                child:  ListViewWithSelectableItems()
-                )
-
+                child: const Text('showModalBottomSheet底部菜单列表')),
+            ElevatedButton(
+                onPressed: () {
+                  _showLoadingDialog(context);
+                },
+                child: const Text('Loading框')),
+            ElevatedButton(
+                onPressed: () {
+                  _showDatePicker();
+                },
+                child: const Text('Material风格的日历选择器')),
+            ElevatedButton(
+                onPressed: () {
+                  _showDatePickeriOS();
+                },
+                child: const Text('iOS风格的日历选择器')),
+            const Expanded(child: ListViewWithSelectableItems())
           ],
         ),
       ),
