@@ -1,4 +1,5 @@
 import 'package:base_demo/common/logger.dart';
+import 'package:base_demo/widgets/calendar_screen_page.dart';
 import 'package:base_demo/widgets/dialog_page.dart';
 import 'package:base_demo/widgets/home_page.dart';
 import 'package:base_demo/widgets/main_tabbarview.dart';
@@ -48,7 +49,8 @@ class MyApp extends StatelessWidget {
       //home: const OrderListPage(),
       // home: const MainTabBarView(),
       // home: const MyNestedScrollViewPage(),
-      home: const DialogPage(),
+      //home: const DialogPage(),
+      home: const CalendarScreenPage(),
       initialRoute: '/',
       onGenerateRoute: XRouter.generateRoute,
     );
