@@ -1,4 +1,5 @@
 import 'package:base_demo/widgets/animated_list_widget.dart';
+import 'package:base_demo/widgets/box_constraints_demo_widget.dart';
 import 'package:base_demo/widgets/custom_render_object_widget.dart';
 import 'package:base_demo/widgets/detail_page.dart';
 import 'package:base_demo/widgets/event_bus_widget.dart';
@@ -122,7 +123,7 @@ class PageTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text('This is Page two'),
+      child: BoxConstraintsDemoWidget(),
     );
   }
 }
