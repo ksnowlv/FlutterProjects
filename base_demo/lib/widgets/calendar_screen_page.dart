@@ -1,3 +1,4 @@
+import 'package:base_demo/common/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -33,15 +34,18 @@ class CalendarScreenPageState extends State<CalendarScreenPage> {
           setState(() {
             _selectedDay = selectedDay;
             _focusedDay = focusedDay; // update `_focusedDay` here as well
+            XLogger.getLogger().d('您选择的日期:$_selectedDay, 当前焦点日期:$_focusedDay');
           });
         },
         onFormatChanged: (format) {
           setState(() {
             _calendarFormat = format;
+            XLogger.getLogger().d('当前日历格式:$_calendarFormat');
           });
         },
         onPageChanged: (focusedDay) {
           _focusedDay = focusedDay;
+           XLogger.getLogger().d('当前焦点日期:$_focusedDay');
         },
       ),
     );
