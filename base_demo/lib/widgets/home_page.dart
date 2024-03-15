@@ -5,6 +5,7 @@ import 'package:base_demo/widgets/detail_page.dart';
 import 'package:base_demo/widgets/event_bus_widget.dart';
 import 'package:base_demo/widgets/goods_list_widget.dart';
 import 'package:base_demo/widgets/grid_view_widget.dart';
+import 'package:base_demo/widgets/row_column_widget.dart';
 import 'package:base_demo/widgets/single_child_scrollview_page.dart';
 import 'package:flutter/material.dart';
 
@@ -136,7 +137,7 @@ class PageMine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text('This is Page three'),
+      child: RowColumnWidget()
     );
   }
 }
