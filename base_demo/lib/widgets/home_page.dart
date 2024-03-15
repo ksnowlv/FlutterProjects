@@ -3,6 +3,7 @@ import 'package:base_demo/widgets/box_constraints_demo_widget.dart';
 import 'package:base_demo/widgets/custom_render_object_widget.dart';
 import 'package:base_demo/widgets/detail_page.dart';
 import 'package:base_demo/widgets/event_bus_widget.dart';
+import 'package:base_demo/widgets/flex_widget.dart';
 import 'package:base_demo/widgets/goods_list_widget.dart';
 import 'package:base_demo/widgets/grid_view_widget.dart';
 import 'package:base_demo/widgets/row_column_widget.dart';
@@ -137,7 +138,8 @@ class PageMine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: RowColumnWidget()
+      // child: RowColumnWidget()
+      child: FlexWidget(),
     );
   }
 }
