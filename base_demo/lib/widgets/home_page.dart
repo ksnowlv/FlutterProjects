@@ -9,6 +9,7 @@ import 'package:base_demo/widgets/grid_view_widget.dart';
 import 'package:base_demo/widgets/row_column_widget.dart';
 import 'package:base_demo/widgets/shared_preferences.widget.dart';
 import 'package:base_demo/widgets/single_child_scrollview_page.dart';
+import 'package:base_demo/widgets/stack_%20positioned_widget.dart';
 import 'package:base_demo/widgets/wrap_flow_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -143,7 +144,8 @@ class PageMine extends StatelessWidget {
       // child: RowColumnWidget()
       //child: FlexWidget(),
       //child: SharedPreferencesWidget(),
-      child: WrapFlowWidget() ,
+      //child: WrapFlowWidget() ,
+      child: StackPositionedWidget(),
     );
   }
 }
