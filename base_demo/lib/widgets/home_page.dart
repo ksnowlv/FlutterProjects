@@ -1,3 +1,4 @@
+import 'package:base_demo/widgets/align_widegt.dart';
 import 'package:base_demo/widgets/animated_list_widget.dart';
 import 'package:base_demo/widgets/box_constraints_demo_widget.dart';
 import 'package:base_demo/widgets/custom_render_object_widget.dart';
@@ -145,7 +146,8 @@ class PageMine extends StatelessWidget {
       //child: FlexWidget(),
       //child: SharedPreferencesWidget(),
       //child: WrapFlowWidget() ,
-      child: StackPositionedWidget(),
+      //child: StackPositionedWidget(),
+       child: AlignWidegt(),
     );
   }
 }
