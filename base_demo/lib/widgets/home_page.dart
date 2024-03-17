@@ -7,7 +7,9 @@ import 'package:base_demo/widgets/flex_widget.dart';
 import 'package:base_demo/widgets/goods_list_widget.dart';
 import 'package:base_demo/widgets/grid_view_widget.dart';
 import 'package:base_demo/widgets/row_column_widget.dart';
+import 'package:base_demo/widgets/shared_preferences.widget.dart';
 import 'package:base_demo/widgets/single_child_scrollview_page.dart';
+import 'package:base_demo/widgets/wrap_flow_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -139,7 +141,9 @@ class PageMine extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(
       // child: RowColumnWidget()
-      child: FlexWidget(),
+      //child: FlexWidget(),
+      //child: SharedPreferencesWidget(),
+      child: WrapFlowWidget() ,
     );
   }
 }
