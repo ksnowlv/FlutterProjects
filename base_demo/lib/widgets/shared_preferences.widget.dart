@@ -17,22 +17,22 @@ class SharedPreferencesWidgetState extends State<SharedPreferencesWidget> {
   @override
   void initState() {
     super.initState();
-    _loadSavedText();
+    _loadName();
   }
 
-  // 加载已保存的文本
-  _loadSavedText() async {
+  // 加载姓名
+  _loadName() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       _name = prefs.getString('name') ?? '';
     });
   }
 
-  // 保存文本
-  _saveText() async {
+  // 保存姓名
+  _saveName() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('name', _nameController.text);
-    _loadSavedText(); // 保存完成后重新加载已保存的文本
+    _loadName(); // 保存完成后重新加载已保存的文本
   }
 
   @override
@@ -73,12 +73,12 @@ class SharedPreferencesWidgetState extends State<SharedPreferencesWidget> {
         const SizedBox(height: 10.0),
         ElevatedButton(
           onPressed: () {
-            _saveText();
+            _saveName();
           },
-          child: const Text('保存'),
+          child: const Text('保存姓名'),
         ),
         const SizedBox(height: 16.0),
-        Text('保存 文本为: $_name'),
+        Text('保存姓名为: $_name'),
       ],
     );
   }
