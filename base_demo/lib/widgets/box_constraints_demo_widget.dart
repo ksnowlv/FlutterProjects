@@ -1,3 +1,6 @@
+import 'package:base_demo/widgets/webview_widget.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -80,9 +83,29 @@ class BoxConstraintsDemoWidget extends StatelessWidget {
             return const LayoutBuilderCustomWidget(200, 100);
           },
           ),
+
+          ElevatedButton(
+            onPressed: () {
+                jumpWebViewEvent(context);
+            }, 
+            child: const Text('跳转webview'))
         ],
       ),
     );
+  }
+
+  void jumpWebViewEvent(BuildContext context) async {
+   final result = await Navigator.push(
+       context,
+        MaterialPageRoute(
+            builder: (context) => const WebviewWidget( url: 'http://www.baidu.com',
+                )));
+
+    if (!context.mounted) {
+      return;
+    }
+
+    debugPrint('receive result:$result');
   }
 }
 
