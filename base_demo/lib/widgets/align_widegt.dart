@@ -12,7 +12,7 @@ class AlignWidegt extends StatelessWidget {
           alignment: Alignment.topLeft,
           child: Container(
             width: 50,
-            height: 50,
+            height: 30,
             color: Colors.blue,
           ),
         ),
@@ -20,7 +20,7 @@ class AlignWidegt extends StatelessWidget {
           alignment: Alignment.topCenter,
           child: Container(
             width: 50,
-            height: 50,
+            height: 30,
             color: Colors.blue,
           ),
         ),
@@ -28,7 +28,7 @@ class AlignWidegt extends StatelessWidget {
           alignment: Alignment.topRight,
           child: Container(
             width: 50,
-            height: 50,
+            height: 30,
             color: Colors.blue,
           ),
         ),
@@ -36,7 +36,7 @@ class AlignWidegt extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Container(
             width: 50,
-            height: 50,
+            height: 30,
             color: Colors.red,
           ),
         ),
@@ -44,7 +44,7 @@ class AlignWidegt extends StatelessWidget {
           alignment: Alignment.center,
           child: Container(
             width: 50,
-            height: 50,
+            height: 30,
             color: Colors.red,
           ),
         ),
@@ -52,7 +52,7 @@ class AlignWidegt extends StatelessWidget {
           alignment: Alignment.centerRight,
           child: Container(
             width: 50,
-            height: 50,
+            height: 30,
             color: Colors.red,
           ),
         ),
@@ -60,7 +60,7 @@ class AlignWidegt extends StatelessWidget {
           alignment: Alignment.bottomLeft,
           child: Container(
             width: 50,
-            height: 50,
+            height: 30,
             color: Colors.green,
           ),
         ),
@@ -68,7 +68,7 @@ class AlignWidegt extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           child: Container(
             width: 50,
-            height: 50,
+            height: 30,
             color: Colors.green,
           ),
         ),
@@ -76,7 +76,7 @@ class AlignWidegt extends StatelessWidget {
           alignment: Alignment.bottomRight,
           child: Container(
             width: 50,
-            height: 50,
+            height: 30,
             color: Colors.green,
           ),
         ),
@@ -97,11 +97,17 @@ class AlignWidegt extends StatelessWidget {
             child: Text("hello world!"),
           ),
         ),
-
-        //const SizedBox(height: 20,),
+        const DecoratedBox(
+          decoration: BoxDecoration(color: Colors.red),
+          child: Center(
+            widthFactor: 1,
+            heightFactor: 1,
+            child: Text("hello world!"),
+          ),
+        ),
 
         Container(
-          margin: EdgeInsets.only(top: 20.0, left: 20, right: 20),
+          margin: EdgeInsets.only(top: 10.0, left: 20, right: 20),
           decoration: BoxDecoration(
             color: Colors.blue, // 背景颜色
             border: Border.all(color: Colors.red, width: 2.0), // 边框
