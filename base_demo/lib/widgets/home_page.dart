@@ -5,6 +5,7 @@ import 'package:base_demo/widgets/custom_render_object_widget.dart';
 import 'package:base_demo/widgets/detail_page.dart';
 import 'package:base_demo/widgets/event_bus_widget.dart';
 import 'package:base_demo/widgets/flex_widget.dart';
+import 'package:base_demo/widgets/flutter_toast_widget.dart';
 import 'package:base_demo/widgets/goods_list_widget.dart';
 import 'package:base_demo/widgets/grid_view_widget.dart';
 import 'package:base_demo/widgets/row_column_widget.dart';
@@ -13,6 +14,7 @@ import 'package:base_demo/widgets/single_child_scrollview_page.dart';
 import 'package:base_demo/widgets/stack_%20positioned_widget.dart';
 import 'package:base_demo/widgets/wrap_flow_widget.dart';
 import 'package:flutter/material.dart';
+//import 'package:flutterto';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
@@ -147,7 +149,9 @@ class PageMine extends StatelessWidget {
       //child: SharedPreferencesWidget(),
       //child: WrapFlowWidget() ,
       //child: StackPositionedWidget(),
-       child: AlignWidegt(),
+      // child: AlignWidegt(),
+      
+      child: FlutterToastWidget(),
     );
   }
 }

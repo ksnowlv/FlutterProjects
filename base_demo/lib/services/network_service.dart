@@ -1,9 +1,7 @@
 import 'package:base_demo/models/user/regist_request.dart';
 import 'package:base_demo/models/user/regist_response.dart';
-import 'package:base_demo/services/final_url.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'dart:convert';
 
 class NetworkService {
   static final NetworkService _singleton = NetworkService._internal();

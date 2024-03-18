@@ -1,9 +1,8 @@
+import 'package:base_demo/models/user/regist_response.dart';
+import 'package:base_demo/services/network_service.dart';
 import 'package:base_demo/widgets/flutter_inappwebview_widget.dart';
 import 'package:base_demo/widgets/webview_widget.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class BoxConstraintsDemoWidget extends StatelessWidget {
   const BoxConstraintsDemoWidget({super.key});
@@ -82,7 +81,12 @@ class BoxConstraintsDemoWidget extends StatelessWidget {
               onPressed: () {
                 jumpFlutterInAppWebViewEvent(context);
               },
-              child: const Text('跳转flutter_inappwebview'))
+              child: const Text('跳转flutter_inappwebview')),
+          ElevatedButton(
+              onPressed: () {
+                handleLoginEvent();
+              },
+              child: const Text('测试登陆接口'))
         ],
       ),
     );
@@ -116,6 +120,18 @@ class BoxConstraintsDemoWidget extends StatelessWidget {
     }
 
     debugPrint('receive result:$result');
+  }
+
+  void handleLoginEvent() async {
+    //NetworkService().testGet();
+    NetworkService().testHome();
+    RegistResponse? response = await NetworkService().testRegist();
+
+    if (response != null) {
+      debugPrint("注册成功，返回信息：${response.message}");
+    } else {
+      debugPrint("注册失败");
+    }
   }
 }
 
