@@ -8,6 +8,7 @@ import 'package:base_demo/widgets/flex_widget.dart';
 import 'package:base_demo/widgets/flutter_toast_widget.dart';
 import 'package:base_demo/widgets/goods_list_widget.dart';
 import 'package:base_demo/widgets/grid_view_widget.dart';
+import 'package:base_demo/widgets/image_cache_widget.dart';
 import 'package:base_demo/widgets/row_column_widget.dart';
 import 'package:base_demo/widgets/shared_preferences.widget.dart';
 import 'package:base_demo/widgets/single_child_scrollview_page.dart';
@@ -150,8 +151,8 @@ class PageMine extends StatelessWidget {
       //child: WrapFlowWidget() ,
       //child: StackPositionedWidget(),
       // child: AlignWidegt(),
-      
-      child: FlutterToastWidget(),
+      //child: FlutterToastWidget(),
+      child: ImageCacheWidget(),
     );
   }
 }
