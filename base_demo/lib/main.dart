@@ -9,6 +9,7 @@ import 'package:base_demo/widgets/router.dart';
 import 'package:base_demo/widgets/routes_pages.dart';
 import 'package:base_demo/widgets/scrollcontroller_page.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() {
   XLogger.getLogger().d("main init");
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      // home: const MyHomePage(title: 'Flutter Base Demo Home Page'),
+       //home: const MyHomePage(title: 'Flutter Base Demo Home Page'),
        home: const HomePage(title: "My home page"),
       // home: const HomeScreen(),
       // home: ScrollControllerPage(),
@@ -53,11 +54,13 @@ class MyApp extends StatelessWidget {
       //home: const CalendarScreenPage(),
       initialRoute: '/',
       onGenerateRoute: XRouter.generateRoute,
+      builder: FToastBuilder(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  
   const MyHomePage({super.key, required this.title});
 
   // This widget is the home page of your application. It is stateful, meaning
@@ -76,7 +79,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  late FToast fToast;
+
   int _counter = 0;
+
+  @override
+  void initState() {
+  
+    super.initState();
+
+    fToast = FToast();
+    // if you want to use context from globally instead of content we need to pass navigatorKey.currentContext!
+    fToast.init(context);
+  }
 
   void _incrementCounter() {
     setState(() {
@@ -93,8 +109,50 @@ class _MyHomePageState extends State<MyHomePage> {
       XLogger.getLogger().e('counter:$_counter');
       XLogger.getLogger().f('counter:$_counter');
       XLogger.getLogger().d('counter:$_counter');
+
+      _showToast();
     });
   }
+
+  void _showToast() {
+    Widget toast = Container(
+        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 22.0),
+        decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(25.0),
+        color: Colors.greenAccent,
+        ),
+        child: const Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+            Icon(Icons.check),
+            SizedBox(
+            width: 12.0,
+            ),
+            Text("This is a Custom Toast"),
+        ],
+        ),
+    );
+
+
+    fToast.showToast(
+        child: toast,
+        gravity: ToastGravity.BOTTOM,
+        toastDuration: const Duration(seconds: 12),
+    );
+    
+    // Custom Toast Position
+    fToast.showToast(
+        child: toast,
+        toastDuration: const Duration(seconds: 10),
+        positionedToastBuilder: (context, child) {
+          return Positioned(
+            top: 156.0,
+            left: 16.0,
+            child: child,
+          );
+        });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -137,4 +195,5 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+
 }
