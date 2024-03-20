@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AlignWidegt extends StatelessWidget {
-  const AlignWidegt({Key? key}) : super(key: key);
+  const AlignWidegt({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +107,7 @@ class AlignWidegt extends StatelessWidget {
         ),
 
         Container(
-          margin: EdgeInsets.only(top: 10.0, left: 20, right: 20),
+          margin: const EdgeInsets.only(top: 10.0, left: 20, right: 20),
           decoration: BoxDecoration(
             color: Colors.blue, // 背景颜色
             border: Border.all(color: Colors.red, width: 2.0), // 边框
