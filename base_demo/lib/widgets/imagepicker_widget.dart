@@ -16,20 +16,36 @@ class ImagePickerWidgetState extends State<ImagePickerWidget> {
   XFile? _imageFile;
 
   void _pickImage() async {
+    PermissionStatus status = await Permission.photos.status;
 
-    Map<Permission, PermissionStatus> statuses = await [
-  Permission.camera,
-  Permission.photos,
-].request();
+    if (status.isGranted) {
+      // 权限已经被授予
+      // 在这里可以执行相关操作
+      debugPrint('用户已授权相册访问权限');
+    } else {
+      // 权限尚未被授予，需要请求权限
+      Map<Permission, PermissionStatus> statuses = await [
+        Permission.photos,
+      ].request();
+      
+      // 处理权限请求的结果
+      if (statuses[Permission.photos] == PermissionStatus.granted) {
+        // 用户已授予相册访问权限
+        
+      } else {
+        // 用户拒绝了相册访问权限
+        debugPrint('用户拒绝了相册访问权限');
+        return;
+      }
+    }
 
     final XFile? imageFile =
-        await _picker.pickImage(source: ImageSource.gallery);
-
-    if (imageFile != null) {
-      setState(() {
-        _imageFile = imageFile;
-      });
-    }
+            await _picker.pickImage(source: ImageSource.gallery);
+        if (imageFile != null) {
+          setState(() {
+            _imageFile = imageFile;
+          });
+        }
   }
 
   @override
