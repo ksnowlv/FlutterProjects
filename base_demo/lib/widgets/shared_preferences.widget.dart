@@ -17,22 +17,24 @@ class SharedPreferencesWidgetState extends State<SharedPreferencesWidget> {
   @override
   void initState() {
     super.initState();
-    _loadName();
+    _loadData();
   }
 
   // 加载姓名
-  _loadName() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+  _loadData() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
-      _name = prefs.getString('name') ?? '';
+      _name = preferences.getString('name') ?? '';
+      _password = preferences.getString('password') ?? '';
+
     });
   }
 
   // 保存姓名
-  _saveName() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('name', _nameController.text);
-    _loadName(); // 保存完成后重新加载已保存的文本
+  _saveData() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    await preferences.setString('name', _name);
+    await preferences.setString('password', _password);
   }
 
   @override
@@ -45,13 +47,21 @@ class SharedPreferencesWidgetState extends State<SharedPreferencesWidget> {
           height: 10,
         ),
         _buildInputRow('姓名:', _nameController, '请输入姓名', (value) {
-          _name = value;
+          setState(() {
+             _name = value;
+             debugPrint(_name);
+          });
+         
         }),
         const SizedBox(
           height: 20,
         ),
         _buildInputRow('密码:', _passwordController, '请输入密码', (value) {
-          _password = value;
+          setState(() {
+              _password = value;
+              debugPrint(_password);
+          });
+        
         }),
         const SizedBox(height: 10.0),
         Row(
@@ -73,12 +83,12 @@ class SharedPreferencesWidgetState extends State<SharedPreferencesWidget> {
         const SizedBox(height: 10.0),
         ElevatedButton(
           onPressed: () {
-            _saveName();
+            _saveData();
           },
-          child: const Text('保存姓名'),
+          child: const Text('保存姓名，密码'),
         ),
         const SizedBox(height: 16.0),
-        Text('保存姓名为: $_name'),
+        Text('保存姓名为: $_name, 密码为: $_password'),
       ],
     );
   }
