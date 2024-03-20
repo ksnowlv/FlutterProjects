@@ -20,8 +20,7 @@ class RegistData {
 class RegistResponse extends BaseResponse {
     final RegistData data;
 
-    RegistResponse({required int code, required String message, required this.data})
-        : super(code: code, message: message);
+    RegistResponse({required super.code, required super.message, required this.data});
 
     factory RegistResponse.fromJson(Map<String, dynamic> json) {
       return RegistResponse(
