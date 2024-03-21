@@ -1,4 +1,7 @@
+import 'package:base_demo/common/hive_manage.dart';
 import 'package:base_demo/common/logger.dart';
+import 'package:base_demo/widgets/detail_page.dart';
+import 'package:get/get.dart';
 import 'package:base_demo/widgets/calendar_screen_page.dart';
 import 'package:base_demo/widgets/dialog_page.dart';
 import 'package:base_demo/widgets/home_page.dart';
@@ -10,10 +13,17 @@ import 'package:base_demo/widgets/routes_pages.dart';
 import 'package:base_demo/widgets/scrollcontroller_page.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
-void main() {
+void main() async {
   XLogger.getLogger().d("main init");
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  FlutterNativeSplash.remove();
+
+  await HiveManage.init();
   runApp(const MyApp());
+  
 }
 
 class MyApp extends StatelessWidget {
@@ -22,6 +32,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
+    // return const GetMaterialApp(
+    //   title: 'GetX demo',
+    //   home: HomePage(title: 'home page'),
+    // );
+
     return MaterialApp(
       title: 'Flutter Base Demo',
       theme: ThemeData(
@@ -55,6 +71,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       onGenerateRoute: XRouter.generateRoute,
       builder: FToastBuilder(),
+      
     );
   }
 }

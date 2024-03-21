@@ -1,21 +1,29 @@
+import 'package:base_demo/bloc/counter_cubit.dart';
 import 'package:base_demo/widgets/align_widegt.dart';
 import 'package:base_demo/widgets/animated_list_widget.dart';
+import 'package:base_demo/widgets/animations_widget.dart';
 import 'package:base_demo/widgets/box_constraints_demo_widget.dart';
+import 'package:base_demo/widgets/counter_widget.dart';
 import 'package:base_demo/widgets/custom_render_object_widget.dart';
 import 'package:base_demo/widgets/detail_page.dart';
 import 'package:base_demo/widgets/event_bus_widget.dart';
 import 'package:base_demo/widgets/flex_widget.dart';
+import 'package:base_demo/widgets/flutte_secure_storage_widget.dart';
 import 'package:base_demo/widgets/flutter_toast_widget.dart';
+import 'package:base_demo/widgets/getx_widget.dart';
 import 'package:base_demo/widgets/goods_list_widget.dart';
 import 'package:base_demo/widgets/grid_view_widget.dart';
+import 'package:base_demo/widgets/hive_widget.dart';
 import 'package:base_demo/widgets/image_cache_widget.dart';
+import 'package:base_demo/widgets/imagepicker_widget.dart';
 import 'package:base_demo/widgets/photo_view_widget.dart';
 import 'package:base_demo/widgets/row_column_widget.dart';
 import 'package:base_demo/widgets/shared_preferences.widget.dart';
 import 'package:base_demo/widgets/single_child_scrollview_page.dart';
-import 'package:base_demo/widgets/stack_%20positioned_widget.dart';
 import 'package:base_demo/widgets/wrap_flow_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:base_demo/widgets/flutte_secure_storage_widget.dart';
 //import 'package:flutterto';
 
 class HomePage extends StatefulWidget {
@@ -148,13 +156,23 @@ class PageMine extends StatelessWidget {
     return const Center(
       // child: RowColumnWidget()
       //child: FlexWidget(),
-      //child: SharedPreferencesWidget(),
+      // child: SharedPreferencesWidget(),
       //child: WrapFlowWidget() ,
       //child: StackPositionedWidget(),
       // child: AlignWidegt(),
       //child: FlutterToastWidget(),
       //child: ImageCacheWidget(),
-      child: PhotoViewWidget(),
+      //child: PhotoViewWidget(),
+      // child: ImagePickerWidget(),
+      // child:GetxWidget(),
+      //child:AnimationsWidget(),
+      //child: FlutteSecureStorageWidget() ,
+      child: HiveWidget(),
+     
+    );
+
+    return BlocProvider(create:(context) => CounterCubit(0), 
+    child: const Center(child:  CounterWidget()),
     );
   }
 }
