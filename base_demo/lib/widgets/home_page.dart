@@ -17,6 +17,7 @@ import 'package:base_demo/widgets/hive_widget.dart';
 import 'package:base_demo/widgets/image_cache_widget.dart';
 import 'package:base_demo/widgets/imagepicker_widget.dart';
 import 'package:base_demo/widgets/photo_view_widget.dart';
+import 'package:base_demo/widgets/provider_widget.dart';
 import 'package:base_demo/widgets/row_column_widget.dart';
 import 'package:base_demo/widgets/shared_preferences.widget.dart';
 import 'package:base_demo/widgets/single_child_scrollview_page.dart';
@@ -167,7 +168,8 @@ class PageMine extends StatelessWidget {
       // child:GetxWidget(),
       //child:AnimationsWidget(),
       //child: FlutteSecureStorageWidget() ,
-      child: HiveWidget(),
+      //child: HiveWidget(),
+      child: ProviderWidget(),
      
     );
 

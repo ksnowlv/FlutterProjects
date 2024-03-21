@@ -1,6 +1,7 @@
 import 'package:base_demo/common/hive_manage.dart';
 import 'package:base_demo/common/logger.dart';
 import 'package:base_demo/widgets/detail_page.dart';
+import 'package:base_demo/widgets/provider_widget.dart';
 import 'package:get/get.dart';
 import 'package:base_demo/widgets/calendar_screen_page.dart';
 import 'package:base_demo/widgets/dialog_page.dart';
@@ -14,6 +15,7 @@ import 'package:base_demo/widgets/scrollcontroller_page.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   XLogger.getLogger().d("main init");
@@ -22,8 +24,15 @@ void main() async {
   FlutterNativeSplash.remove();
 
   await HiveManage.init();
-  runApp(const MyApp());
-  
+
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => CounterModel()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -32,7 +41,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     // return const GetMaterialApp(
     //   title: 'GetX demo',
     //   home: HomePage(title: 'home page'),
@@ -59,8 +67,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-       //home: const MyHomePage(title: 'Flutter Base Demo Home Page'),
-       home: const HomePage(title: "My home page"),
+      //home: const MyHomePage(title: 'Flutter Base Demo Home Page'),
+      home: const HomePage(title: "My home page"),
       // home: const HomeScreen(),
       // home: ScrollControllerPage(),
       //home: const OrderListPage(),
@@ -71,13 +79,11 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       onGenerateRoute: XRouter.generateRoute,
       builder: FToastBuilder(),
-      
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  
   const MyHomePage({super.key, required this.title});
 
   // This widget is the home page of your application. It is stateful, meaning
@@ -96,14 +102,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   late FToast fToast;
 
   int _counter = 0;
 
   @override
   void initState() {
-  
     super.initState();
 
     fToast = FToast();
@@ -133,30 +137,29 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _showToast() {
     Widget toast = Container(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 22.0),
-        decoration: BoxDecoration(
+      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 22.0),
+      decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25.0),
         color: Colors.greenAccent,
-        ),
-        child: const Row(
+      ),
+      child: const Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-            Icon(Icons.check),
-            SizedBox(
+          Icon(Icons.check),
+          SizedBox(
             width: 12.0,
-            ),
-            Text("This is a Custom Toast"),
+          ),
+          Text("This is a Custom Toast"),
         ],
-        ),
+      ),
     );
-
 
     fToast.showToast(
-        child: toast,
-        gravity: ToastGravity.BOTTOM,
-        toastDuration: const Duration(seconds: 12),
+      child: toast,
+      gravity: ToastGravity.BOTTOM,
+      toastDuration: const Duration(seconds: 12),
     );
-    
+
     // Custom Toast Position
     fToast.showToast(
         child: toast,
@@ -169,7 +172,6 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -212,5 +214,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
-
 }
