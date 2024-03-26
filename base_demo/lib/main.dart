@@ -1,6 +1,7 @@
 import 'package:base_demo/common/hive_manage.dart';
 import 'package:base_demo/common/logger.dart';
 import 'package:base_demo/pages/detail_page.dart';
+import 'package:base_demo/pages/main/main_page.dart';
 import 'package:base_demo/widgets/provider_widget.dart';
 import 'package:base_demo/pages/pull_to_refresh_page.dart';
 import 'package:get/get.dart';
@@ -68,8 +69,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      //home: const MyHomePage(title: 'Flutter Base Demo Home Page'),
-      home: const HomePage(title: "My home page"),
+  
+      home: const MainPage(title: "Main page"),
       // home: const HomeScreen(),
       // home: ScrollControllerPage(),
       //home: const OrderListPage(),

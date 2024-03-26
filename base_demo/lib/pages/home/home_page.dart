@@ -1,16 +1,23 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:base_demo/bloc/counter_cubit.dart';
+import 'package:base_demo/pages/detail_page.dart';
+import 'package:base_demo/pages/layout/align_widget.dart';
+import 'package:base_demo/pages/layout/box_constraints_demo_widget.dart';
+import 'package:base_demo/pages/layout/flex_widget.dart';
 import 'package:base_demo/pages/layout/layout_container_page.dart';
 import 'package:base_demo/pages/layout/layout_page.dart';
-import 'package:base_demo/pages/layout/align_widget.dart';
+import 'package:base_demo/pages/layout/row_column_widget.dart';
+import 'package:base_demo/pages/layout/wrap_flow_widget.dart';
 import 'package:base_demo/widgets/animated_list_widget.dart';
 import 'package:base_demo/widgets/animations_widget.dart';
-import 'package:base_demo/pages/layout/box_constraints_demo_widget.dart';
 import 'package:base_demo/widgets/compute_widget.dart';
 import 'package:base_demo/widgets/counter_widget.dart';
 import 'package:base_demo/widgets/custom_render_object_widget.dart';
-import 'package:base_demo/pages/detail_page.dart';
 import 'package:base_demo/widgets/event_bus_widget.dart';
-import 'package:base_demo/pages/layout/flex_widget.dart';
+import 'package:base_demo/widgets/flutte_secure_storage_widget.dart';
 import 'package:base_demo/widgets/flutte_secure_storage_widget.dart';
 import 'package:base_demo/widgets/flutter_toast_widget.dart';
 import 'package:base_demo/widgets/future_widget.dart';
@@ -23,82 +30,37 @@ import 'package:base_demo/widgets/imagepicker_widget.dart';
 import 'package:base_demo/widgets/isolate_widget.dart';
 import 'package:base_demo/widgets/photo_view_widget.dart';
 import 'package:base_demo/widgets/provider_widget.dart';
-import 'package:base_demo/pages/layout/row_column_widget.dart';
 import 'package:base_demo/widgets/shared_preferences.widget.dart';
 import 'package:base_demo/widgets/single_child_scrollview_page.dart';
-import 'package:base_demo/pages/layout/wrap_flow_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:base_demo/widgets/flutte_secure_storage_widget.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<HomePage> createState() => _HomePageState();
+enum HomePageRouteType {
+  baseWidget, //基础组件
+  layoutWidget, //基础组件
+  scrollWidget, //滚动组件
+  functionalWidget, //功能性组件
+  animationWidget, //动画
+  customWidget, //自定义组件
+  fileWidget, // 文件组件
+  netWidget, //网络组件
+  extensionWidget, //包和插件组件
 }
 
-class _HomePageState extends State<HomePage> {
-  final List<String> _titles = ['首页', '学习', '我的'];
-  final List<Widget> _pages = [
-    const PageOne(title: '首页'),
-    const PageTwo(title: '学习'),
-    const PageMine(title: '我的'),
-  ];
+class HomePage extends StatelessWidget {
+  final Map<HomePageRouteType, String> _widgetMap = {
+    HomePageRouteType.baseWidget: '基础组件',
+    HomePageRouteType.layoutWidget: '基础组件',
+    HomePageRouteType.scrollWidget: '滚动组件',
+    HomePageRouteType.functionalWidget: '功能性组件',
+    HomePageRouteType.animationWidget: '动画组件',
+    HomePageRouteType.fileWidget: '自定义组件',
+    HomePageRouteType.netWidget: '网络组件',
+    HomePageRouteType.extensionWidget: '包和插件组件',
+  };
 
-  int _curIndex = 0;
-  String _pageTitle = '';
-
-  @override
-  void initState() {
-    super.initState();
-
-    _pageTitle = _titles[0];
-  }
-
-  void _onTabTapped(int index) {
-    setState(() {
-      _curIndex = index;
-      _pageTitle = _titles[_curIndex];
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(_pageTitle),
-      ),
-      body: IndexedStack(
-        index: _curIndex,
-        children: _pages,
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _curIndex,
-        onTap: _onTabTapped,
-        items: [
-          BottomNavigationBarItem(
-            icon: Image.asset('images/home.png', width: 60),
-            label: '首页',
-          ),
-          BottomNavigationBarItem(
-            icon: Image.asset('images/study.png', width: 60),
-            label: '学习',
-          ),
-          BottomNavigationBarItem(
-            icon: Image.asset('images/mine.png', width: 60),
-            label: '我的',
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class PageOne extends StatelessWidget {
-  const PageOne({super.key, required this.title});
+  HomePage({
+    super.key,
+    required this.title,
+  });
 
   final String title;
 
@@ -107,7 +69,7 @@ class PageOne extends StatelessWidget {
         context,
         MaterialPageRoute(
             builder: (context) => const DetailPage(
-                  data: 'Hello from PageOne',
+                  data: 'Hello from main',
                 )));
 
     if (!context.mounted) {
@@ -119,97 +81,70 @@ class PageOne extends StatelessWidget {
     );
   }
 
-  void _onGotoLayoutPage(BuildContext context) async {
+  void _onShowPage(
+      BuildContext context, HomePageRouteType pageRouteType) async {
     if (!context.mounted) {
       return;
     }
 
-    final result = await Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const LayoutContainerPage()));
+    final result = await Navigator.push(context,
+        MaterialPageRoute(builder: (context) => _getWidgetPage(pageRouteType)));
+    debugPrint('result:$result');
   }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          ElevatedButton(
-            onPressed: () {
-              _onButtonPressed(context);
-            },
-            child: const Text('go go detail page'),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          ElevatedButton(
-            onPressed: () {
-              _onGotoLayoutPage(context);
-            },
-            child: const Text('布局类组件'),
-          ),
-
-          //  const CustomRenderObjectWidget(),
-          //const XSingleChildScrollView(),
-          // const Expanded(
-          //   child: GoodsListWidget(), // 在这里嵌入MyListViewWidget
-          // ),
-          // const Expanded(
-          //   child: GridViewWidget(),
-          // ),
-          const Expanded(child: AnimatedListWidget()),
-          const EventBusWidget(),
-        ],
-      ),
+    return ListView(
+      children: HomePageRouteType.values
+          .map<Widget>((pageType) => Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                      onPressed: () => _onShowPage(context, pageType),
+                      child: Text(
+                        _getPageTypeText(pageType),
+                        style: const TextStyle(fontSize: 18),
+                      )),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                ],
+              ))
+          .toList(),
     );
   }
-}
 
-class PageTwo extends StatelessWidget {
-  const PageTwo({super.key, required this.title});
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: BoxConstraintsDemoWidget(),
-    );
+  String _getPageTypeText(HomePageRouteType pageRouteType) {
+    return _widgetMap[pageRouteType] ?? "没有该模块";
   }
-}
 
-class PageMine extends StatelessWidget {
-  const PageMine({super.key, required this.title});
+  Widget _getWidgetPage(HomePageRouteType pageRouteType) {
+    switch (pageRouteType) {
+      case HomePageRouteType.baseWidget:
+        return const LayoutContainerPage();
+      case HomePageRouteType.layoutWidget:
+        return const LayoutContainerPage();
 
-  final String title;
+      case HomePageRouteType.scrollWidget:
+        return const LayoutContainerPage();
+      case HomePageRouteType.functionalWidget:
+        return const LayoutContainerPage();
 
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      // child: RowColumnWidget()
-      //child: FlexWidget(),
-      // child: SharedPreferencesWidget(),
-      //child: WrapFlowWidget() ,
-      //child: StackPositionedWidget(),
-      // child: AlignWidegt(),
-      //child: FlutterToastWidget(),
-      //child: ImageCacheWidget(),
-      //child: PhotoViewWidget(),
-      // child: ImagePickerWidget(),
-      // child:GetxWidget(),
-      //child:AnimationsWidget(),
-      //child: FlutteSecureStorageWidget() ,
-      //child: HiveWidget(),
-      //child: ProviderWidget(),
-      //child: ComputeWidget(),
-      // child: IsolateWidget(),
-      child: FutureWidget(),
-    );
+      case HomePageRouteType.animationWidget:
+        return const LayoutContainerPage();
+      case HomePageRouteType.customWidget:
+        return const LayoutContainerPage();
 
-    return BlocProvider(
-      create: (context) => CounterCubit(0),
-      child: const Center(child: CounterWidget()),
-    );
+      case HomePageRouteType.fileWidget:
+        return const LayoutContainerPage();
+      case HomePageRouteType.netWidget:
+        return const LayoutContainerPage();
+
+      case HomePageRouteType.extensionWidget:
+        return const LayoutContainerPage();
+
+      default:
+        return Text('没有该模块:$pageRouteType');
+    }
   }
 }

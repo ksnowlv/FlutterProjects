@@ -6,7 +6,7 @@ import 'package:base_demo/pages/layout/stack_positioned_widget.dart';
 import 'package:base_demo/pages/layout/wrap_flow_widget.dart';
 import 'package:flutter/material.dart';
 
-// 声明一个枚举类型
+// 布局页面类型
 enum LayoutPageType {
   constraintLayout, //约束布局
   linearLayout, //线性布局
