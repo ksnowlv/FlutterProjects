@@ -1,0 +1,88 @@
+# 使用官方的Ubuntu 20.04镜像作为基础镜像
+FROM ubuntu:20.04
+
+# 设置环境变量，防止在安装过程中出现交互式提示
+ENV DEBIAN_FRONTEND=noninteractive
+
+# 复制apt源列表
+COPY sources.list /etc/apt/
+
+# 更新软件包列表并安装必要的依赖项
+RUN apt-get update && apt-get install -y \
+  # 安装所需的软件包
+  git \
+  wget \
+  curl \
+  build-essential \
+  clang \
+  llvm \
+  liblldb-10-dev \
+  libncurses5-dev \
+  libncursesw5-dev \
+  xz-utils \
+  python3 \
+  python3-pip \
+  libssl-dev \
+  pkg-config \
+  unzip \
+  cmake \
+  ninja-build \
+  libgtk-3-dev \
+  libxi6 \
+  libgconf-2-4 \
+  libnss3 \
+  libasound2 \
+  libxtst6 \
+  xauth \
+  npm \
+  openjdk-11-jdk
+
+# 下载Flutter压缩文件并解压至/app/FlutterProjects目录下
+ARG FLUTTER_VERSION="2.8.1"  # 你可以指定需要的 Flutter 版本
+RUN mkdir /app && \
+    curl -L -o flutter.tar.xz "https://storage.flutter-io.cn/flutter_infra_release/releases/stable/linux/flutter_linux_${FLUTTER_VERSION}-stable.tar.xz" && \
+    tar -xf flutter.tar.xz -C /app && \
+    rm flutter.tar.xz 
+
+# 将Flutter的bin目录添加到PATH中
+ENV PATH="/app/flutter/bin:${PATH}"
+
+
+# 设置工作目录
+WORKDIR /app/FlutterProjects
+
+# 安装Flutter插件
+RUN /app/flutter/bin/flutter config --no-analytics && \
+    /app/flutter/bin/flutter doctor -v
+
+
+
+# 更新软件包列表并安装基本依赖
+RUN apt-get update && apt-get install -y \
+  curl \
+  wget \
+  gnupg \
+  software-properties-common \
+  apt-transport-https
+
+# 安装VSCode的GPG密钥和添加软件源
+RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg && \
+    install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/ && \
+    echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list
+
+# 安装VSCode
+RUN apt-get update && apt-get install -y \
+  code
+
+# 设置默认的工作目录
+WORKDIR /app
+
+RUN mkdir -p /app/FlutterProjects/hello_world
+# 复制上一级目录的同级目录到/app/FlutterProjects
+COPY hello_world /app/FlutterProjects/hello_world
+
+# 暴露端口
+EXPOSE 8080
+
+# 设置启动命令
+CMD ["code"]

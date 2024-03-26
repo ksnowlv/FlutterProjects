@@ -1,0 +1,73 @@
+# 使用官方的Ubuntu 20.04镜像作为基础镜像
+FROM ubuntu:20.04
+
+# 设置环境变量，防止在安装过程中出现交互式提示
+ENV DEBIAN_FRONTEND=noninteractive
+
+# 复制apt源列表
+COPY sources.list /etc/apt/
+
+# 更新软件包列表并安装必要的依赖项
+RUN apt-get update && apt-get install -y \
+  git \
+  unzip \
+  curl \
+  libglu1-mesa \
+  lib32stdc++6
+
+# 从指定的git仓库下载Flutter
+WORKDIR /app
+RUN git clone https://github.com/flutter/flutter.git
+
+# 配置Flutter的环境变量
+ENV PATH="/app/flutter/bin:${PATH}"
+
+
+# 安装Flutter插件
+RUN /app/flutter/bin/flutter config --no-analytics && \
+    /app/flutter/bin/flutter doctor -v
+
+
+# 更新软件包列表并安装基本依赖
+RUN apt-get update && apt-get install --fix-missing -y \
+  build-essential \
+  curl \
+  wget \
+  gnupg \
+  software-properties-common \
+  apt-transport-https \
+  libglu1-mesa \
+  lib32stdc++6 \
+  build-essential \
+  cmake \
+  ninja-build \
+  clang \
+  lldb \
+  lld \
+  gdb\
+  pkg-config\
+  libgtk-3-dev
+
+
+# 下载并安装 Dart 插件
+#RUN code --install-extension Dart-Code.dart-code
+#RUN code --install-extension Dart-Code.flutter  
+
+
+# 设置 DISPLAY 环境变量
+ENV DISPLAY=:0
+    
+
+# 设置默认的工作目录
+WORKDIR /app
+
+RUN mkdir -p /app/FlutterProjects/hello_world
+# 复制上一级目录的同级目录到/app/FlutterProjects
+COPY hello_world /app/FlutterProjects/hello_world
+
+# 暴露端口
+EXPOSE 8080
+
+# 设置启动命令
+CMD ["code"]
+
