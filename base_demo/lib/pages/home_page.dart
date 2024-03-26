@@ -3,19 +3,22 @@ import 'package:base_demo/widgets/align_widegt.dart';
 import 'package:base_demo/widgets/animated_list_widget.dart';
 import 'package:base_demo/widgets/animations_widget.dart';
 import 'package:base_demo/widgets/box_constraints_demo_widget.dart';
+import 'package:base_demo/widgets/compute_widget.dart';
 import 'package:base_demo/widgets/counter_widget.dart';
 import 'package:base_demo/widgets/custom_render_object_widget.dart';
-import 'package:base_demo/widgets/detail_page.dart';
+import 'package:base_demo/pages/detail_page.dart';
 import 'package:base_demo/widgets/event_bus_widget.dart';
 import 'package:base_demo/widgets/flex_widget.dart';
 import 'package:base_demo/widgets/flutte_secure_storage_widget.dart';
 import 'package:base_demo/widgets/flutter_toast_widget.dart';
+import 'package:base_demo/widgets/future_widget.dart';
 import 'package:base_demo/widgets/getx_widget.dart';
 import 'package:base_demo/widgets/goods_list_widget.dart';
 import 'package:base_demo/widgets/grid_view_widget.dart';
 import 'package:base_demo/widgets/hive_widget.dart';
 import 'package:base_demo/widgets/image_cache_widget.dart';
 import 'package:base_demo/widgets/imagepicker_widget.dart';
+import 'package:base_demo/widgets/isolate_widget.dart';
 import 'package:base_demo/widgets/photo_view_widget.dart';
 import 'package:base_demo/widgets/provider_widget.dart';
 import 'package:base_demo/widgets/row_column_widget.dart';
@@ -169,7 +172,10 @@ class PageMine extends StatelessWidget {
       //child:AnimationsWidget(),
       //child: FlutteSecureStorageWidget() ,
       //child: HiveWidget(),
-      child: ProviderWidget(),
+      //child: ProviderWidget(),
+      //child: ComputeWidget(),
+      // child: IsolateWidget(),
+      child: FutureWidget(),
      
     );
 

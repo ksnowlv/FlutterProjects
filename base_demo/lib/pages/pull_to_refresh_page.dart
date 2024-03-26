@@ -2,17 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-class PullToRefreshWidget extends StatefulWidget {
-  const PullToRefreshWidget({super.key});
+class PullToRefreshPage extends StatefulWidget {
+  const PullToRefreshPage({super.key});
 
   @override
-  PullToRefreshWidgetState createState() => PullToRefreshWidgetState();
+  PullToRefreshPageState createState() => PullToRefreshPageState();
 }
 
-class PullToRefreshWidgetState extends State<PullToRefreshWidget> {
-  RefreshController _refreshController =
+class PullToRefreshPageState extends State<PullToRefreshPage> {
+  final RefreshController _refreshController =
       RefreshController(initialRefresh: false);
-  List<String> _items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+  final List<String> _items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
   int _count = 0;
 
   @override

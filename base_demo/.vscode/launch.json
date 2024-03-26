@@ -40,6 +40,13 @@
             "type": "dart",
             "flutterMode": "profile"
         },
+        {
+            "name": "Flutter (pixel 6a api 26)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+
 
 
     ]

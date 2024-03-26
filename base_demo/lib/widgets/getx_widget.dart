@@ -1,4 +1,4 @@
-import 'package:base_demo/widgets/detail_page.dart';
+import 'package:base_demo/pages/detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
