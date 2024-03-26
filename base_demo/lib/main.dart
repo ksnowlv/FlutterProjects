@@ -2,6 +2,7 @@ import 'package:base_demo/common/hive_manage.dart';
 import 'package:base_demo/common/logger.dart';
 import 'package:base_demo/widgets/detail_page.dart';
 import 'package:base_demo/widgets/provider_widget.dart';
+import 'package:base_demo/widgets/pull_to_refresh_widget.dart';
 import 'package:get/get.dart';
 import 'package:base_demo/widgets/calendar_screen_page.dart';
 import 'package:base_demo/widgets/dialog_page.dart';
@@ -68,7 +69,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       //home: const MyHomePage(title: 'Flutter Base Demo Home Page'),
-      home: const HomePage(title: "My home page"),
+      //home: const HomePage(title: "My home page"),
       // home: const HomeScreen(),
       // home: ScrollControllerPage(),
       //home: const OrderListPage(),
@@ -76,6 +77,7 @@ class MyApp extends StatelessWidget {
       // home: const MyNestedScrollViewPage(),
       //home: const DialogPage(),
       //home: const CalendarScreenPage(),
+       home: const PullToRefreshWidget(),
       initialRoute: '/',
       onGenerateRoute: XRouter.generateRoute,
       builder: FToastBuilder(),
