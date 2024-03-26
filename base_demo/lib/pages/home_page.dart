@@ -40,17 +40,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _curIndex = 0;
-
+  final List<String> _titles = ['首页', '学习', '我的'];
   final List<Widget> _pages = [
     const PageOne(title: '首页'),
     const PageTwo(title: '学习'),
     const PageMine(title: '我的'),
   ];
 
+  int _curIndex = 0;
+  String _pageTitle = '';
+
+  @override
+  void initState() {
+    super.initState();
+
+    _pageTitle = _titles[0];
+  }
+
   void _onTabTapped(int index) {
     setState(() {
       _curIndex = index;
+      _pageTitle = _titles[_curIndex];
     });
   }
 
@@ -58,7 +68,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Bottom Navigation Example'),
+        title: Text(_pageTitle),
       ),
       body: IndexedStack(
         index: _curIndex,
@@ -176,11 +186,11 @@ class PageMine extends StatelessWidget {
       //child: ComputeWidget(),
       // child: IsolateWidget(),
       child: FutureWidget(),
-     
     );
 
-    return BlocProvider(create:(context) => CounterCubit(0), 
-    child: const Center(child:  CounterWidget()),
+    return BlocProvider(
+      create: (context) => CounterCubit(0),
+      child: const Center(child: CounterWidget()),
     );
   }
 }

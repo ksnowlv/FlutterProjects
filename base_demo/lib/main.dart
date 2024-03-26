@@ -1,16 +1,16 @@
 import 'package:base_demo/common/hive_manage.dart';
 import 'package:base_demo/common/logger.dart';
-import 'package:base_demo/widgets/detail_page.dart';
+import 'package:base_demo/pages/detail_page.dart';
 import 'package:base_demo/widgets/provider_widget.dart';
-import 'package:base_demo/widgets/pull_to_refresh_widget.dart';
+import 'package:base_demo/pages/pull_to_refresh_page.dart';
 import 'package:get/get.dart';
-import 'package:base_demo/widgets/calendar_screen_page.dart';
-import 'package:base_demo/widgets/dialog_page.dart';
-import 'package:base_demo/widgets/home_page.dart';
+import 'package:base_demo/pages/calendar_screen_page.dart';
+import 'package:base_demo/dialogs/dialog_page.dart';
+import 'package:base_demo/pages/home_page.dart';
 import 'package:base_demo/widgets/main_tabbarview.dart';
-import 'package:base_demo/widgets/mynestedscrollview_page.dart';
-import 'package:base_demo/widgets/order_list_page.dart';
-import 'package:base_demo/widgets/router.dart';
+import 'package:base_demo/pages/mynestedscrollview_page.dart';
+import 'package:base_demo/pages/order_list_page.dart';
+import 'package:base_demo/routes/router.dart';
 import 'package:base_demo/widgets/routes_pages.dart';
 import 'package:base_demo/widgets/scrollcontroller_page.dart';
 import 'package:flutter/material.dart';
@@ -69,7 +69,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       //home: const MyHomePage(title: 'Flutter Base Demo Home Page'),
-      //home: const HomePage(title: "My home page"),
+      home: const HomePage(title: "My home page"),
       // home: const HomeScreen(),
       // home: ScrollControllerPage(),
       //home: const OrderListPage(),
@@ -77,7 +77,7 @@ class MyApp extends StatelessWidget {
       // home: const MyNestedScrollViewPage(),
       //home: const DialogPage(),
       //home: const CalendarScreenPage(),
-       home: const PullToRefreshWidget(),
+      // home: const PullToRefreshPage(),
       initialRoute: '/',
       onGenerateRoute: XRouter.generateRoute,
       builder: FToastBuilder(),
