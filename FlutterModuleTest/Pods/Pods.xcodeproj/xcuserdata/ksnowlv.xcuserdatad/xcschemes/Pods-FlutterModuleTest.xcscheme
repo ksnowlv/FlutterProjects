@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EA11FE368017AAD824FE99E68C57BF40"
-               BuildableName = "libPods-FlutterModuleTest.a"
+               BuildableName = "Pods_FlutterModuleTest.framework"
                BlueprintName = "Pods-FlutterModuleTest"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
