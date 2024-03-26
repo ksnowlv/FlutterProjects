@@ -1,41 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:base_demo/bloc/counter_cubit.dart';
 import 'package:base_demo/pages/detail_page.dart';
-import 'package:base_demo/pages/layout/align_widget.dart';
-import 'package:base_demo/pages/layout/box_constraints_demo_widget.dart';
-import 'package:base_demo/pages/layout/flex_widget.dart';
 import 'package:base_demo/pages/layout/layout_container_page.dart';
-import 'package:base_demo/pages/layout/layout_page.dart';
-import 'package:base_demo/pages/layout/row_column_widget.dart';
-import 'package:base_demo/pages/layout/wrap_flow_widget.dart';
-import 'package:base_demo/widgets/animated_list_widget.dart';
-import 'package:base_demo/widgets/animations_widget.dart';
-import 'package:base_demo/widgets/compute_widget.dart';
-import 'package:base_demo/widgets/counter_widget.dart';
-import 'package:base_demo/widgets/custom_render_object_widget.dart';
-import 'package:base_demo/widgets/event_bus_widget.dart';
-import 'package:base_demo/widgets/flutte_secure_storage_widget.dart';
-import 'package:base_demo/widgets/flutte_secure_storage_widget.dart';
-import 'package:base_demo/widgets/flutter_toast_widget.dart';
-import 'package:base_demo/widgets/future_widget.dart';
-import 'package:base_demo/widgets/getx_widget.dart';
-import 'package:base_demo/widgets/goods_list_widget.dart';
-import 'package:base_demo/widgets/grid_view_widget.dart';
-import 'package:base_demo/widgets/hive_widget.dart';
-import 'package:base_demo/widgets/image_cache_widget.dart';
-import 'package:base_demo/widgets/imagepicker_widget.dart';
-import 'package:base_demo/widgets/isolate_widget.dart';
-import 'package:base_demo/widgets/photo_view_widget.dart';
-import 'package:base_demo/widgets/provider_widget.dart';
-import 'package:base_demo/widgets/shared_preferences.widget.dart';
-import 'package:base_demo/widgets/single_child_scrollview_page.dart';
 
 enum HomePageRouteType {
   baseWidget, //基础组件
-  layoutWidget, //基础组件
+  layoutWidget, //布局组件
   scrollWidget, //滚动组件
   functionalWidget, //功能性组件
   animationWidget, //动画
@@ -48,11 +19,12 @@ enum HomePageRouteType {
 class HomePage extends StatelessWidget {
   final Map<HomePageRouteType, String> _widgetMap = {
     HomePageRouteType.baseWidget: '基础组件',
-    HomePageRouteType.layoutWidget: '基础组件',
+    HomePageRouteType.layoutWidget: '布局组件',
     HomePageRouteType.scrollWidget: '滚动组件',
     HomePageRouteType.functionalWidget: '功能性组件',
     HomePageRouteType.animationWidget: '动画组件',
-    HomePageRouteType.fileWidget: '自定义组件',
+    HomePageRouteType.customWidget: '自定义组件',
+    HomePageRouteType.fileWidget: '文件组件',
     HomePageRouteType.netWidget: '网络组件',
     HomePageRouteType.extensionWidget: '包和插件组件',
   };

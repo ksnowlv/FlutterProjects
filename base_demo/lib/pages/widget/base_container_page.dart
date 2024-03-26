@@ -16,7 +16,7 @@ class _BaseContainerPageState extends State<BaseContainerPage> {
         title: const Text(''),
       ),
       body: ListView(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         children: WidgetPageType.values
             .map<Widget>((pageType) => Column(
                   mainAxisAlignment: MainAxisAlignment.center,
