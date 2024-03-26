@@ -1,14 +1,16 @@
 import 'package:base_demo/bloc/counter_cubit.dart';
-import 'package:base_demo/widgets/align_widegt.dart';
+import 'package:base_demo/pages/layout/layout_container_page.dart';
+import 'package:base_demo/pages/layout/layout_page.dart';
+import 'package:base_demo/pages/layout/align_widget.dart';
 import 'package:base_demo/widgets/animated_list_widget.dart';
 import 'package:base_demo/widgets/animations_widget.dart';
-import 'package:base_demo/widgets/box_constraints_demo_widget.dart';
+import 'package:base_demo/pages/layout/box_constraints_demo_widget.dart';
 import 'package:base_demo/widgets/compute_widget.dart';
 import 'package:base_demo/widgets/counter_widget.dart';
 import 'package:base_demo/widgets/custom_render_object_widget.dart';
 import 'package:base_demo/pages/detail_page.dart';
 import 'package:base_demo/widgets/event_bus_widget.dart';
-import 'package:base_demo/widgets/flex_widget.dart';
+import 'package:base_demo/pages/layout/flex_widget.dart';
 import 'package:base_demo/widgets/flutte_secure_storage_widget.dart';
 import 'package:base_demo/widgets/flutter_toast_widget.dart';
 import 'package:base_demo/widgets/future_widget.dart';
@@ -21,14 +23,13 @@ import 'package:base_demo/widgets/imagepicker_widget.dart';
 import 'package:base_demo/widgets/isolate_widget.dart';
 import 'package:base_demo/widgets/photo_view_widget.dart';
 import 'package:base_demo/widgets/provider_widget.dart';
-import 'package:base_demo/widgets/row_column_widget.dart';
+import 'package:base_demo/pages/layout/row_column_widget.dart';
 import 'package:base_demo/widgets/shared_preferences.widget.dart';
 import 'package:base_demo/widgets/single_child_scrollview_page.dart';
-import 'package:base_demo/widgets/wrap_flow_widget.dart';
+import 'package:base_demo/pages/layout/wrap_flow_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:base_demo/widgets/flutte_secure_storage_widget.dart';
-//import 'package:flutterto';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
@@ -118,19 +119,37 @@ class PageOne extends StatelessWidget {
     );
   }
 
+  void _onGotoLayoutPage(BuildContext context) async {
+    if (!context.mounted) {
+      return;
+    }
+
+    final result = await Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const LayoutContainerPage()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          const Text('This is Page one111'),
           ElevatedButton(
             onPressed: () {
               _onButtonPressed(context);
             },
             child: const Text('go go detail page'),
           ),
+          const SizedBox(
+            height: 10,
+          ),
+          ElevatedButton(
+            onPressed: () {
+              _onGotoLayoutPage(context);
+            },
+            child: const Text('布局类组件'),
+          ),
+
           //  const CustomRenderObjectWidget(),
           //const XSingleChildScrollView(),
           // const Expanded(

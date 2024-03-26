@@ -6,7 +6,7 @@ import 'package:base_demo/pages/pull_to_refresh_page.dart';
 import 'package:get/get.dart';
 import 'package:base_demo/pages/calendar_screen_page.dart';
 import 'package:base_demo/dialogs/dialog_page.dart';
-import 'package:base_demo/pages/home_page.dart';
+import 'package:base_demo/pages/home/home_page.dart';
 import 'package:base_demo/widgets/main_tabbarview.dart';
 import 'package:base_demo/pages/mynestedscrollview_page.dart';
 import 'package:base_demo/pages/order_list_page.dart';
