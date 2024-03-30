@@ -1,4 +1,4 @@
-import 'package:base_demo/pages/mine/task/view/TaskView.dart';
+import 'package:base_demo/pages/mine/task/view/task_view.dart';
 import 'package:base_demo/pages/mine/task/view_models/task_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

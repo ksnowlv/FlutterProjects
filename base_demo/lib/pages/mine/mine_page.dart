@@ -1,11 +1,7 @@
 import 'package:base_demo/bloc/counter_cubit.dart';
 import 'package:base_demo/pages/mine/task/controller/task_controller.dart';
-import 'package:base_demo/pages/mine/task/view_models/task_view_model.dart';
 import 'package:base_demo/pages/mine/user/page_route/user_page_route.dart';
-import 'package:base_demo/pages/mine/user/view/user_page.dart';
-import 'package:base_demo/pages/mine/user/view_models/user_view_model.dart';
 import 'package:base_demo/widgets/counter_widget.dart';
-import 'package:base_demo/widgets/future_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

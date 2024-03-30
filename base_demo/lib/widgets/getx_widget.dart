@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class GetxWidget extends StatefulWidget {
-  const GetxWidget({Key? key}) : super(key: key);
+  const GetxWidget({super.key});
 
   @override
   GetxWidgetState createState() => GetxWidgetState();
