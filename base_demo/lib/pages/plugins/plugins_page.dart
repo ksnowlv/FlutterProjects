@@ -1,9 +1,11 @@
 import 'package:base_demo/pages/plugins/audio_players_page.dart';
+import 'package:base_demo/pages/plugins/image_compress_page.dart';
 import 'package:base_demo/pages/plugins/video_player_page.dart';
 import 'package:flutter/material.dart';
 
   enum PluginType {
   videoPlayer,//https://pub-web.flutter-io.cn/packages/video_player
+  imageCompress,//https://pub-web.flutter-io.cn/packages/flutter_image_compress
   autoRoute,//https://pub-web.flutter-io.cn/packages/auto_route
   audioPlayers,//https://pub-web.flutter-io.cn/packages/audioplayers
   flutterAnimate,//https://pub-web.flutter-io.cn/packages/flutter_animate
@@ -23,6 +25,7 @@ class _PluginsPageState extends State<PluginsPage> {
 
    final Map<PluginType, String> _pluginTypeMap = {
     PluginType.videoPlayer: '视频播放组件',
+    PluginType.imageCompress: '图片压缩组件',
     PluginType.autoRoute: '自动路由组件',
     PluginType.audioPlayers: '音频播放组件',
     PluginType.flutterAnimate: 'flutter动画组件',
@@ -81,8 +84,12 @@ class _PluginsPageState extends State<PluginsPage> {
       case PluginType.autoRoute:
         return const Text('2');
 
+      case PluginType.imageCompress:
+        return const ImageCompressPage();
+
       case PluginType.audioPlayers:
         return const AudioPlayersPage();
+
       case PluginType.flutterAnimate:
         return const Text('3');
 
