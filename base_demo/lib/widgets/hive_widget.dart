@@ -67,7 +67,7 @@ class HiveWidgetState extends State<HiveWidget> {
         SizedBox(
           width: 300, // 替换为适当的宽度
           height: 200, // 替换为适当的高度
-          child: Lottie.asset('lottiefile/animation - 1710978871330.json',
+          child: Lottie.asset('assets/lottie/animation - 1710978871330.json',
               onLoaded: (composition) {
                 debugPrint('composition:${composition.duration}');
               }),

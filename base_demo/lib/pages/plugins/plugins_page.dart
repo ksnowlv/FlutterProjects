@@ -1,3 +1,4 @@
+import 'package:base_demo/pages/plugins/audio_players_page.dart';
 import 'package:base_demo/pages/plugins/video_player_page.dart';
 import 'package:flutter/material.dart';
 
@@ -81,7 +82,7 @@ class _PluginsPageState extends State<PluginsPage> {
         return const Text('2');
 
       case PluginType.audioPlayers:
-        return const Text('');
+        return const AudioPlayersPage();
       case PluginType.flutterAnimate:
         return const Text('3');
 
