@@ -1,8 +1,8 @@
 import 'package:base_demo/pages/home/home_page.dart';
 import 'package:base_demo/pages/mine/mine_page.dart';
-import 'package:base_demo/pages/study/study_page.dart';
+import 'package:base_demo/pages/plugins/plugins_page.dart';
 import 'package:flutter/material.dart';
-    
+
 class MainPage extends StatefulWidget {
   const MainPage({super.key, required this.title});
 
@@ -13,11 +13,11 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  final List<String> _titles = ['首页', '学习', '我的'];
+  static final List<String> _titles = ['首页', '插件', '我的'];
   final List<Widget> _pages = [
-    HomePage(title: '首页'),
-    const StudyPage(title: '学习'),
-    const MinePage(title: '我的'),
+    HomePage(title: _titles[0]),
+    PluginsPage(title: _titles[1]),
+    MinePage(title: _titles[2]),
   ];
 
   int _curIndex = 0;
@@ -27,7 +27,7 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     super.initState();
 
-    _pageTitle = _titles[0];
+    _pageTitle = _titles[_curIndex];
   }
 
   void _onTabTapped(int index) {
@@ -52,16 +52,16 @@ class _MainPageState extends State<MainPage> {
         onTap: _onTabTapped,
         items: [
           BottomNavigationBarItem(
-            icon: Image.asset('images/home.png', width: 60),
-            label: '首页',
+            icon: Image.asset('assets/images/home.png', width: 60),
+            label: _titles[0],
           ),
           BottomNavigationBarItem(
-            icon: Image.asset('images/study.png', width: 60),
-            label: '学习',
+            icon: Image.asset('assets/images/plugin.png', width: 60),
+            label: _titles[1],
           ),
           BottomNavigationBarItem(
-            icon: Image.asset('images/mine.png', width: 60),
-            label: '我的',
+            icon: Image.asset('assets/images/mine.png', width: 60),
+            label: _titles[2],
           ),
         ],
       ),
