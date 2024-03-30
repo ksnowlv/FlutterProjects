@@ -21,13 +21,6 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
         // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
         setState(() {});
       });
-      // _controller.addListener(() { 
-      //   if(mounted) {
-      //     setState(() {
-            
-      //     });
-      //   }
-      // });
   }
 
   @override
@@ -50,8 +43,8 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
                     aspectRatio: _controller.value.aspectRatio,
                     child: VideoPlayer(_controller),
                   )
-                : const CircularProgressIndicator(),// ,
-                       Padding(
+                : const CircularProgressIndicator(), // ,
+            Padding(
               padding: const EdgeInsets.all(10.0),
               child: VideoProgressIndicator(
                 _controller,
@@ -70,15 +63,13 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
                   child: const Text('开始播放'),
                   onPressed: () {
                     setState(() {
-                      //if (!_controller.value.isPlaying) 
-                      {
-                        _controller.play();
-                      }
+                      _controller.play();
                     });
                   },
                 ),
-
-                const SizedBox(width: 50,),
+                const SizedBox(
+                  width: 50,
+                ),
                 ElevatedButton(
                   child: const Text('暂停播放'),
                   onPressed: () {
