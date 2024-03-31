@@ -1,4 +1,5 @@
 import 'package:base_demo/bloc/counter_cubit.dart';
+import 'package:base_demo/pages/mine/stateful_builder_page.dart';
 import 'package:base_demo/pages/mine/task/controller/task_controller.dart';
 import 'package:base_demo/pages/mine/user/page_route/user_page_route.dart';
 import 'package:base_demo/widgets/counter_widget.dart';
@@ -37,6 +38,13 @@ class _MinePageState extends State<MinePage> {
           ElevatedButton(
               onPressed: () => _onShowMVVM(context), 
               child: const Text('mvvm')
+          ), 
+               const SizedBox(
+            height: 20,
+          ),
+          ElevatedButton(
+              onPressed: () => _onShowStatefulBuilderPage(context), 
+              child: const Text('局部刷新-StatefulBuilder')
           )
         ],
       ),
@@ -86,6 +94,16 @@ class _MinePageState extends State<MinePage> {
 
     final result = await Navigator.push(context,
         MaterialPageRoute(builder: (context) => const UserPageRoute()));
+    debugPrint('result:$result');
+  }
+
+    void _onShowStatefulBuilderPage(BuildContext context) async {
+    if (!context.mounted) {
+      return;
+    }
+
+    final result = await Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const StatefulBuilderPage()));
     debugPrint('result:$result');
   }
 }
