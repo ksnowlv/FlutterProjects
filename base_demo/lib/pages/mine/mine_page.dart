@@ -2,6 +2,7 @@ import 'package:base_demo/bloc/counter_cubit.dart';
 import 'package:base_demo/pages/mine/stateful_builder_page.dart';
 import 'package:base_demo/pages/mine/task/controller/task_controller.dart';
 import 'package:base_demo/pages/mine/user/page_route/user_page_route.dart';
+import 'package:base_demo/pages/mine/value_listenable_builder_page.dart';
 import 'package:base_demo/widgets/counter_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,12 +17,11 @@ class MinePage extends StatefulWidget {
 }
 
 class _MinePageState extends State<MinePage> {
-
   @override
   void initState() {
-  
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -30,22 +30,24 @@ class _MinePageState extends State<MinePage> {
         children: [
           ElevatedButton(
               onPressed: () => _onShowNewMVC(context),
-              child: const Text('new mvc')
-          ),
+              child: const Text('new mvc')),
           const SizedBox(
             height: 20,
           ),
           ElevatedButton(
-              onPressed: () => _onShowMVVM(context), 
-              child: const Text('mvvm')
-          ), 
-               const SizedBox(
+              onPressed: () => _onShowMVVM(context), child: const Text('mvvm')),
+          const SizedBox(
             height: 20,
           ),
           ElevatedButton(
-              onPressed: () => _onShowStatefulBuilderPage(context), 
-              child: const Text('局部刷新-StatefulBuilder')
-          )
+              onPressed: () => _onShowStatefulBuilderPage(context),
+              child: const Text('StatefulBuilder局部刷新')),
+          const SizedBox(
+            height: 20,
+          ),
+          ElevatedButton(
+              onPressed: () => _onShowValueListenableBuilderPage(context),
+              child: const Text('ValueListenableBuilder局部刷新')),
         ],
       ),
     ));
@@ -97,13 +99,23 @@ class _MinePageState extends State<MinePage> {
     debugPrint('result:$result');
   }
 
-    void _onShowStatefulBuilderPage(BuildContext context) async {
+  void _onShowStatefulBuilderPage(BuildContext context) async {
     if (!context.mounted) {
       return;
     }
 
     final result = await Navigator.push(context,
         MaterialPageRoute(builder: (context) => const StatefulBuilderPage()));
+    debugPrint('result:$result');
+  }
+
+    void _onShowValueListenableBuilderPage(BuildContext context) async {
+    if (!context.mounted) {
+      return;
+    }
+
+    final result = await Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const ValueListenableBuilderPage()));
     debugPrint('result:$result');
   }
 }
