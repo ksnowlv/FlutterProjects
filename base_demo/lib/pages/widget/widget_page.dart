@@ -1,3 +1,4 @@
+import 'package:base_demo/pages/widget/button_widget.dart';
 import 'package:base_demo/pages/widget/text_widget.dart';
 import 'package:flutter/material.dart';
     
@@ -40,7 +41,7 @@ class _WidgetPageState extends State<WidgetPage> {
         return  const TextWidget();
 
       case WidgetPageType.button:
-        return null;
+        return const ButtonWidget();
 
       case WidgetPageType.image:
         return null;
