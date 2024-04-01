@@ -1,5 +1,5 @@
 import 'package:base_demo/common/logger.dart';
-import 'package:base_demo/widgets/list_view_with_selectable_items.dart';
+import 'package:base_demo/pages/scroll_widget/list_view_with_selectable_items.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

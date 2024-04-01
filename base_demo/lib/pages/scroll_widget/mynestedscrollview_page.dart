@@ -10,6 +10,7 @@ class MyNestedScrollViewPage extends StatelessWidget {
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return <Widget>[
             SliverAppBar(
+              title: const Text('NestedScrollView'),
               expandedHeight: 200,
               floating: false,
               pinned: false,

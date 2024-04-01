@@ -53,6 +53,7 @@ class IsolateWidgetState extends State<IsolateWidget> {
     // 监听来自Isolate的消息
     SendPort sendPort = _receivePort.sendPort;
     Isolate isolate = await Isolate.spawn(entryPoint, sendPort);
+    debugPrint('Isolate: $isolate');
     _receivePort.listen((message) {
       debugPrint('Message from isolate: $message');
       if (message is String) {

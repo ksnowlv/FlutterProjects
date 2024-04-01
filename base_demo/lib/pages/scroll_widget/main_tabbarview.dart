@@ -1,38 +1,42 @@
 import 'package:flutter/material.dart';
-    
-class MainTabBarView extends StatelessWidget {
 
-  const MainTabBarView({ super.key });
-  
+class MainTabBarView extends StatelessWidget {
+  const MainTabBarView({super.key});
+
   @override
   Widget build(BuildContext context) {
-
     return DefaultTabController(
-      length: 4,
-     child:      Scaffold(
-      appBar: AppBar(
-        title: const Text('flutter app'),
-        bottom: const TabBar(
-          tabs: [
-            Tab(text: '首页',),
-            Tab(text: '通讯录',) ,
-            Tab(text: '发现',),
-            Tab(text: '我的',)
-          ],
-        ),
-      ),
-      body: const TabBarView(
-        children: [
-          HomeTab(), 
-          ContactsTab(), 
-          DiscoverTab(),
-          MineTab(), 
-
-        ],
-      ),
-    ));
+        length: 4,
+        child: Scaffold(
+          appBar: AppBar(
+             title: const Text('flutter app'),
+            bottom: const TabBar(
+              tabs: [
+                Tab(
+                  text: '首页',
+                ),
+                Tab(
+                  text: '通讯录',
+                ),
+                Tab(
+                  text: '发现',
+                ),
+                Tab(
+                  text: '我的',
+                )
+              ],
+            ),
+          ),
+          body: const TabBarView(
+            children: [
+              HomeTab(),
+              ContactsTab(),
+              DiscoverTab(),
+              MineTab(),
+            ],
+          ),
+        ));
   }
-
 }
 
 class HomeTab extends StatelessWidget {
@@ -48,7 +52,6 @@ class HomeTab extends StatelessWidget {
 
 class ContactsTab extends StatelessWidget {
   const ContactsTab({super.key});
-
 
   @override
   Widget build(BuildContext context) {

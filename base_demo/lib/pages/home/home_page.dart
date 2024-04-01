@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:base_demo/pages/scroll_widget/scroll_container_page.dart';
+import 'package:base_demo/pages/widget/base_container_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:base_demo/pages/detail_page.dart';
@@ -93,12 +95,12 @@ class HomePage extends StatelessWidget {
   Widget _getWidgetPage(HomePageRouteType pageRouteType) {
     switch (pageRouteType) {
       case HomePageRouteType.baseWidget:
-        return const LayoutContainerPage();
+        return const BaseContainerPage();
       case HomePageRouteType.layoutWidget:
         return const LayoutContainerPage();
 
       case HomePageRouteType.scrollWidget:
-        return const LayoutContainerPage();
+        return const ScrollContainerPage();
       case HomePageRouteType.functionalWidget:
         return const LayoutContainerPage();
 

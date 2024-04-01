@@ -8,9 +8,9 @@ class OrderListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('订单列表'),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('订单列表'),
+      // ),
       body: PageView(
         children: const [
           CachedPage(text: '全部'),
