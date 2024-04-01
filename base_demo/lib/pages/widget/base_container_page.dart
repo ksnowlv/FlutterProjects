@@ -41,8 +41,7 @@ class _BaseContainerPageState extends State<BaseContainerPage> {
       WidgetPageType.text: '文本框',
       WidgetPageType.button: '按钮',
       WidgetPageType.image: '图片框及图片',
-      WidgetPageType.switchSelect: '单选开关',
-      WidgetPageType.checkbox: '复选框',
+      WidgetPageType.switchCheckbox: '单选开关/复选框',
       WidgetPageType.textField: '输入控件',
       WidgetPageType.progressIndicator: '进度指示器',
     };

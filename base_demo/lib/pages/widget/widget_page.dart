@@ -1,5 +1,6 @@
 import 'package:base_demo/pages/widget/button_widget.dart';
 import 'package:base_demo/pages/widget/image_widget.dart';
+import 'package:base_demo/pages/widget/switch_checkBox_widget.dart';
 import 'package:base_demo/pages/widget/text_widget.dart';
 import 'package:flutter/material.dart';
     
@@ -8,8 +9,7 @@ enum WidgetPageType {
   text, //文本框
   button, //按钮
   image, //图片框及图片
-  switchSelect, //单选开关
-  checkbox, //复选框
+  switchCheckbox, //单选开关,复选框
   textField, //输入控件
   progressIndicator,//进度指示器
 }
@@ -47,11 +47,8 @@ class _WidgetPageState extends State<WidgetPage> {
       case WidgetPageType.image:
         return const ImageWidget();
 
-      case WidgetPageType.switchSelect:
-        return  null;
-
-      case WidgetPageType.checkbox:
-        return  null;
+      case WidgetPageType.switchCheckbox:
+        return  const SwitchCheckBoxWidget();
 
       case WidgetPageType.textField:
         return null;
