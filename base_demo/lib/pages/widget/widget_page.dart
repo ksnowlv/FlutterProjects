@@ -1,3 +1,4 @@
+import 'package:base_demo/pages/widget/text_widget.dart';
 import 'package:flutter/material.dart';
     
 
@@ -36,7 +37,7 @@ class _WidgetPageState extends State<WidgetPage> {
     Widget? _widgetFromType(WidgetPageType pageType) {
     switch (pageType) {
       case WidgetPageType.text:
-        return  null;
+        return  const TextWidget();
 
       case WidgetPageType.button:
         return null;
