@@ -1,5 +1,6 @@
 import 'package:base_demo/pages/widget/button_widget.dart';
 import 'package:base_demo/pages/widget/image_widget.dart';
+import 'package:base_demo/pages/widget/progress_indicator_widget.dart';
 import 'package:base_demo/pages/widget/switch_checkBox_widget.dart';
 import 'package:base_demo/pages/widget/text_field_widget.dart';
 import 'package:base_demo/pages/widget/text_widget.dart';
@@ -54,7 +55,7 @@ class _WidgetPageState extends State<WidgetPage> {
       case WidgetPageType.textField:
         return const TextFieldWidget();
       case WidgetPageType.progressIndicator:
-        return const TextFieldWidget();  
+        return const ProgressIndicatorWidget();  
 
       default:
         return const Text('没有该页面');
