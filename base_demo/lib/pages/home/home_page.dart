@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:base_demo/pages/functional/functional_container_page.dart';
 import 'package:base_demo/pages/scroll_widget/scroll_container_page.dart';
 import 'package:base_demo/pages/widget/base_container_page.dart';
 import 'package:flutter/material.dart';
@@ -102,7 +103,7 @@ class HomePage extends StatelessWidget {
       case HomePageRouteType.scrollWidget:
         return const ScrollContainerPage();
       case HomePageRouteType.functionalWidget:
-        return const LayoutContainerPage();
+        return const FunctionalContainerPage();
 
       case HomePageRouteType.animationWidget:
         return const LayoutContainerPage();
