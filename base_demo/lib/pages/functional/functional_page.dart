@@ -1,5 +1,6 @@
 import 'package:base_demo/pages/functional/pop_scop_widget.dart';
 import 'package:base_demo/pages/functional/shared_data_widget.dart';
+import 'package:base_demo/pages/functional/state_shared_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:base_demo/pages/scroll_widget/animated_list_widget.dart';
 import 'package:base_demo/pages/scroll_widget/goods_list_widget.dart';
@@ -50,7 +51,7 @@ class _FunctionalPageState extends State<FunctionalPage> {
       case FunctionalPageType.inheritedWidget:
         return const InheritedContainerWidget();
       case FunctionalPageType.stateShared:
-        return const ListViewWithSelectableItems();  
+        return const StateSharedWidget();  
 
       case FunctionalPageType.colorAndTheme:
         return const AnimatedListWidget();
