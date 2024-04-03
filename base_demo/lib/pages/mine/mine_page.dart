@@ -30,12 +30,12 @@ class _MinePageState extends State<MinePage> {
         children: [
           ElevatedButton(
               onPressed: () => _onShowNewMVC(context),
-              child: const Text('new mvc')),
+              child: const Text('New MVC')),
           const SizedBox(
             height: 20,
           ),
           ElevatedButton(
-              onPressed: () => _onShowMVVM(context), child: const Text('mvvm')),
+              onPressed: () => _onShowMVVM(context), child: const Text('MVVM')),
           const SizedBox(
             height: 20,
           ),
@@ -109,13 +109,15 @@ class _MinePageState extends State<MinePage> {
     debugPrint('result:$result');
   }
 
-    void _onShowValueListenableBuilderPage(BuildContext context) async {
+  void _onShowValueListenableBuilderPage(BuildContext context) async {
     if (!context.mounted) {
       return;
     }
 
-    final result = await Navigator.push(context,
-        MaterialPageRoute(builder: (context) => const ValueListenableBuilderPage()));
+    final result = await Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => const ValueListenableBuilderPage()));
     debugPrint('result:$result');
   }
 }

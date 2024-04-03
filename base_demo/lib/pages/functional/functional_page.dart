@@ -1,3 +1,4 @@
+import 'package:base_demo/pages/functional/color_theme_widget.dart';
 import 'package:base_demo/pages/functional/pop_scop_widget.dart';
 import 'package:base_demo/pages/functional/shared_data_widget.dart';
 import 'package:base_demo/pages/functional/state_shared_widget.dart';
@@ -54,7 +55,7 @@ class _FunctionalPageState extends State<FunctionalPage> {
         return const StateSharedWidget();  
 
       case FunctionalPageType.colorAndTheme:
-        return const AnimatedListWidget();
+        return const ColorThemeWidget();
       case FunctionalPageType.valueListenableBuilder:
         return const GridViewWidget();
 
