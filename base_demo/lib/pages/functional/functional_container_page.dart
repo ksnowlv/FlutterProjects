@@ -1,3 +1,4 @@
+import 'package:base_demo/dialogs/dialog_page.dart';
 import 'package:base_demo/pages/functional/functional_page.dart';
 import 'package:base_demo/pages/mine/value_listenable_builder_page.dart';
 import 'package:flutter/material.dart';
@@ -61,6 +62,8 @@ class _FunctionalContainerPageState extends State<FunctionalContainerPage> {
         await Navigator.push(context, MaterialPageRoute(builder: (context) {
           if (pageType == FunctionalPageType.valueListenableBuilder) {
               return const ValueListenableBuilderPage();
+          } else if (pageType == FunctionalPageType.dialog) {
+            return const DialogPage();
           }
       return FunctionalPage(
           pageType: pageType, pageTitle: _titleFromPageType(pageType));

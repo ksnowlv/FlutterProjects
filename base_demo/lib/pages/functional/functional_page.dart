@@ -1,3 +1,4 @@
+import 'package:base_demo/dialogs/dialog_page.dart';
 import 'package:base_demo/pages/functional/color_theme_widget.dart';
 import 'package:base_demo/pages/functional/future_stream_builder_widget.dart';
 import 'package:base_demo/pages/functional/pop_scop_widget.dart';
@@ -64,7 +65,7 @@ class _FunctionalPageState extends State<FunctionalPage> {
       case FunctionalPageType.futureStreamBuilder:
         return const FutureStreamBuilderWidget();
       case FunctionalPageType.dialog:
-        return const MainTabBarView();
+        return const DialogPage();
     
       default:
         return Text('没有该模块:$pageType');

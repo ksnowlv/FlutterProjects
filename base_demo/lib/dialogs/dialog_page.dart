@@ -181,8 +181,8 @@ class DialogPageState extends State<DialogPage> {
       context: context,
       barrierDismissible: false,
       builder: (context) {
-        return const AlertDialog(
-          content: Column(
+        return AlertDialog(
+          content: const Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               CircularProgressIndicator(),
@@ -192,6 +192,12 @@ class DialogPageState extends State<DialogPage> {
               )
             ],
           ),
+          actions: [
+            TextButton(onPressed: () {
+                Navigator.of(context).pop();
+            }, 
+            child: const Text('取消'))
+          ],
         );
       },
     );
@@ -319,7 +325,6 @@ class DialogPageState extends State<DialogPage> {
                   _showDatePickeriOS();
                 },
                 child: const Text('iOS风格的日历选择器')),
-            const Expanded(child: ListViewWithSelectableItems())
           ],
         ),
       ),
