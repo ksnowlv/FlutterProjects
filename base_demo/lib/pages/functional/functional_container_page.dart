@@ -1,4 +1,5 @@
 import 'package:base_demo/pages/functional/functional_page.dart';
+import 'package:base_demo/pages/mine/value_listenable_builder_page.dart';
 import 'package:flutter/material.dart';
 
 class FunctionalContainerPage extends StatefulWidget {
@@ -58,9 +59,9 @@ class _FunctionalContainerPageState extends State<FunctionalContainerPage> {
 
     final result = 
         await Navigator.push(context, MaterialPageRoute(builder: (context) {
-
-      
-
+          if (pageType == FunctionalPageType.valueListenableBuilder) {
+              return const ValueListenableBuilderPage();
+          }
       return FunctionalPage(
           pageType: pageType, pageTitle: _titleFromPageType(pageType));
     }

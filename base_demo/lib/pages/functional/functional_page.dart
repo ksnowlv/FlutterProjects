@@ -1,7 +1,9 @@
 import 'package:base_demo/pages/functional/color_theme_widget.dart';
+import 'package:base_demo/pages/functional/future_stream_builder_widget.dart';
 import 'package:base_demo/pages/functional/pop_scop_widget.dart';
 import 'package:base_demo/pages/functional/shared_data_widget.dart';
 import 'package:base_demo/pages/functional/state_shared_widget.dart';
+import 'package:base_demo/pages/mine/value_listenable_builder_page.dart';
 import 'package:flutter/material.dart';
 import 'package:base_demo/pages/scroll_widget/animated_list_widget.dart';
 import 'package:base_demo/pages/scroll_widget/goods_list_widget.dart';
@@ -57,10 +59,10 @@ class _FunctionalPageState extends State<FunctionalPage> {
       case FunctionalPageType.colorAndTheme:
         return const ColorThemeWidget();
       case FunctionalPageType.valueListenableBuilder:
-        return const GridViewWidget();
+        return const ValueListenableBuilderPage();
 
       case FunctionalPageType.futureStreamBuilder:
-        return const OrderListPage();
+        return const FutureStreamBuilderWidget();
       case FunctionalPageType.dialog:
         return const MainTabBarView();
     
