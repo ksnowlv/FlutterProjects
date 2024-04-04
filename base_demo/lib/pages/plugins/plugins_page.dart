@@ -1,5 +1,6 @@
 import 'package:base_demo/pages/plugins/audio_players_page.dart';
 import 'package:base_demo/pages/plugins/image_compress_page.dart';
+import 'package:base_demo/pages/plugins/round_checkbox_page.dart';
 import 'package:base_demo/pages/plugins/video_player_page.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,7 @@ import 'package:flutter/material.dart';
   flutterAnimate,//https://pub-web.flutter-io.cn/packages/flutter_animate
   slidingUpPanel,//https://pub-web.flutter-io.cn/packages/sliding_up_panel
   localAuth,//https://pub-web.flutter-io.cn/packages/local_auth
+  roundcheckbox, //https://pub-web.flutter-io.cn/packages/roundcheckbox
 }
 
 class PluginsPage extends StatefulWidget {
@@ -31,6 +33,7 @@ class _PluginsPageState extends State<PluginsPage> {
     PluginType.flutterAnimate: 'flutter动画组件',
     PluginType.slidingUpPanel: '滑动面板组件',
     PluginType.localAuth: '本地生物识别和设备密码验证组件',
+    PluginType.roundcheckbox: "roundcheckbox"
    // PluginTypePage.fileWidget: '文件组件',
    // HomePageRouteType.netWidget: '网络组件',
    // HomePageRouteType.extensionWidget: '包和插件组件',
@@ -97,6 +100,8 @@ class _PluginsPageState extends State<PluginsPage> {
         return const Text('4');
       case PluginType.localAuth:
         return const Text('5');
+      case PluginType.roundcheckbox:
+      return const RoundCheckboxPage();  
 
     
       default:
