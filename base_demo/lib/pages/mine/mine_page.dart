@@ -50,28 +50,9 @@ class _MinePageState extends State<MinePage> {
               child: const Text('ValueListenableBuilder局部刷新')),
         ],
       ),
-    ));
-    return const Center(
-        // child: RowColumnWidget()
-        //child: FlexWidget(),
-        // child: SharedPreferencesWidget(),
-        //child: WrapFlowWidget() ,
-        //child: StackPositionedWidget(),
-        // child: AlignWidegt(),
-        //child: FlutterToastWidget(),
-        //child: ImageCacheWidget(),
-        //child: PhotoViewWidget(),
-        // child: ImagePickerWidget(),
-        // child:GetxWidget(),
-        //child:AnimationsWidget(),
-        //child: FlutteSecureStorageWidget() ,
-        //child: HiveWidget(),
-        //child: ProviderWidget(),
-        //child: ComputeWidget(),
-        // child: IsolateWidget(),
-        // child: FutureWidget(),
-
-        );
+    )
+    );
+    
 
     return BlocProvider(
       create: (context) => CounterCubit(0),

@@ -1,4 +1,3 @@
-import 'package:base_demo/common/app_theme.dart';
 import 'package:base_demo/common/hive_manage.dart';
 import 'package:base_demo/common/logger.dart';
 import 'package:base_demo/common/theme_manager.dart';
@@ -8,7 +7,6 @@ import 'package:base_demo/routes/router.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 void main() async {

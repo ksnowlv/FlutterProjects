@@ -42,6 +42,7 @@ class _CustomWidgetContainerPageState extends State<CustomWidgetContainerPage> {
       CustomWidgetPageType.gradientButton: '自定义按钮GradientButton',
       CustomWidgetPageType.turnBox: '自定义TurnBox',
       CustomWidgetPageType.customPaint: 'CustomPaint',
+      CustomWidgetPageType.gradientCircularProgressIndicator: '圆形背景渐变进度条',
       CustomWidgetPageType.customCheckbox: 'CustomCheckbox',
       CustomWidgetPageType.doneWidget: 'DoneWidget',
       CustomWidgetPageType.waterMark: '水印组件WaterMark',

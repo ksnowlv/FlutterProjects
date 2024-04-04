@@ -18,7 +18,7 @@ class _ProgressIndicatorWidgetState extends State<ProgressIndicatorWidget> {
           // 模糊进度条(会执行一个动画)
           LinearProgressIndicator(
             backgroundColor: Colors.grey[200],
-            valueColor: AlwaysStoppedAnimation(Colors.blue),
+            valueColor: const AlwaysStoppedAnimation(Colors.blue),
           ),
           const SizedBox(
             height: 20,
@@ -26,7 +26,7 @@ class _ProgressIndicatorWidgetState extends State<ProgressIndicatorWidget> {
           //进度条显示50%
           LinearProgressIndicator(
             backgroundColor: Colors.grey[200],
-            valueColor: AlwaysStoppedAnimation(Colors.blue),
+            valueColor: const AlwaysStoppedAnimation(Colors.blue),
             value: .5,
           ),
           // 模糊进度条(会执行一个旋转动画)
@@ -35,7 +35,7 @@ class _ProgressIndicatorWidgetState extends State<ProgressIndicatorWidget> {
           ),
           CircularProgressIndicator(
             backgroundColor: Colors.grey[200],
-            valueColor: AlwaysStoppedAnimation(Colors.blue),
+            valueColor: const AlwaysStoppedAnimation(Colors.blue),
           ),
           const SizedBox(
             height: 20,
@@ -43,7 +43,7 @@ class _ProgressIndicatorWidgetState extends State<ProgressIndicatorWidget> {
 //进度条显示50%，会显示一个半圆
           CircularProgressIndicator(
             backgroundColor: Colors.grey[200],
-            valueColor: AlwaysStoppedAnimation(Colors.blue),
+            valueColor: const AlwaysStoppedAnimation(Colors.blue),
             value: .5,
           ),
 
@@ -52,7 +52,7 @@ class _ProgressIndicatorWidgetState extends State<ProgressIndicatorWidget> {
             height: 3,
             child: LinearProgressIndicator(
               backgroundColor: Colors.grey[200],
-              valueColor: AlwaysStoppedAnimation(Colors.red),
+              valueColor: const AlwaysStoppedAnimation(Colors.red),
               value: .5,
             ),
           ),
@@ -62,7 +62,7 @@ class _ProgressIndicatorWidgetState extends State<ProgressIndicatorWidget> {
             width: 100,
             child: CircularProgressIndicator(
               backgroundColor: Colors.grey[200],
-              valueColor: AlwaysStoppedAnimation(Colors.green),
+              valueColor: const AlwaysStoppedAnimation(Colors.green),
               value: .7,
             ),
           ),

@@ -6,14 +6,6 @@ import 'package:base_demo/pages/functional/shared_data_widget.dart';
 import 'package:base_demo/pages/functional/state_shared_widget.dart';
 import 'package:base_demo/pages/mine/value_listenable_builder_page.dart';
 import 'package:flutter/material.dart';
-import 'package:base_demo/pages/scroll_widget/animated_list_widget.dart';
-import 'package:base_demo/pages/scroll_widget/goods_list_widget.dart';
-import 'package:base_demo/pages/scroll_widget/grid_view_widget.dart';
-import 'package:base_demo/pages/scroll_widget/list_view_with_selectable_items.dart';
-import 'package:base_demo/pages/scroll_widget/main_tabbarview.dart';
-import 'package:base_demo/pages/scroll_widget/mynestedscrollview_page.dart';
-import 'package:base_demo/pages/scroll_widget/order_list_page.dart';
-import 'package:base_demo/pages/scroll_widget/single_child_scrollview_page.dart';
 
 
 enum FunctionalPageType {
