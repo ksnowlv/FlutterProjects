@@ -10,7 +10,7 @@ class RoundCheckboxPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(''),
+        title: const Text('roundcheckbox'),
       ),
       body: SizedBox(
         width: double.infinity,

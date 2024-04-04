@@ -4,7 +4,8 @@ import 'package:base_demo/pages/mine/value_listenable_builder_page.dart';
 import 'package:flutter/material.dart';
 
 class FunctionalContainerPage extends StatefulWidget {
-  const FunctionalContainerPage({super.key});
+  final String title;
+  const FunctionalContainerPage({super.key, required this.title});
 
   @override
   State<FunctionalContainerPage> createState() => _FunctionalContainerPageState();
@@ -15,7 +16,7 @@ class _FunctionalContainerPageState extends State<FunctionalContainerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('功能性组件'),
+        title: Text(widget.title),
       ),
       body: ListView(
         padding: const EdgeInsets.all(20),

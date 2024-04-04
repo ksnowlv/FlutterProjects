@@ -84,8 +84,6 @@ class HomePage extends StatelessWidget {
                   _getPageTypeText(pageType),
                   // style: const TextStyle(fontSize: 18),
                 )),
-
-                
           ],
         );
       },
@@ -101,27 +99,31 @@ class HomePage extends StatelessWidget {
 
     switch (pageRouteType) {
       case HomePageRouteType.baseWidget:
-        return BaseContainerPage(title:title);
+        return BaseContainerPage(title: title);
       case HomePageRouteType.layoutWidget:
-        return LayoutContainerPage(title:title);
+        return LayoutContainerPage(title: title);
 
       case HomePageRouteType.scrollWidget:
-        return const ScrollContainerPage();
+        return ScrollContainerPage(
+          title: title,
+        );
       case HomePageRouteType.functionalWidget:
-        return const FunctionalContainerPage();
+        return FunctionalContainerPage(
+          title: title,
+        );
 
       case HomePageRouteType.animationWidget:
-        return LayoutContainerPage(title:title);
+        return LayoutContainerPage(title: title);
       case HomePageRouteType.customWidget:
-        return const CustomWidgetContainerPage();
+        return CustomWidgetContainerPage(title: title);
 
       case HomePageRouteType.fileWidget:
-        return LayoutContainerPage(title:title);
+        return LayoutContainerPage(title: title);
       case HomePageRouteType.netWidget:
-        return LayoutContainerPage(title:title);
+        return LayoutContainerPage(title: title);
 
       case HomePageRouteType.extensionWidget:
-        return LayoutContainerPage(title:title);
+        return LayoutContainerPage(title: title);
 
       default:
         return Text('没有该模块:$pageRouteType');

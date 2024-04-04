@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class CustomWidgetContainerPage extends StatefulWidget {
-  const CustomWidgetContainerPage({super.key});
+  final String title;
+  const CustomWidgetContainerPage({super.key, required this.title});
 
   @override
   State<CustomWidgetContainerPage> createState() =>
@@ -15,7 +16,7 @@ class _CustomWidgetContainerPageState extends State<CustomWidgetContainerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('自定义组件'),
+        title: Text(widget.title),
       ),
       body: ListView.builder(
         itemExtent: 60,

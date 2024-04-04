@@ -4,7 +4,8 @@ import 'package:base_demo/pages/scroll_widget/scroll_page.dart';
 import 'package:flutter/material.dart';
 
 class ScrollContainerPage extends StatefulWidget {
-  const ScrollContainerPage({super.key});
+  final String title;
+  const ScrollContainerPage({super.key, required this.title});
 
   @override
   State<ScrollContainerPage> createState() => _ScrollContainerPageState();
@@ -15,7 +16,7 @@ class _ScrollContainerPageState extends State<ScrollContainerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(''),
+        title: Text(widget.title),
       ),
       body: ListView.builder(
         itemExtent: 60,
