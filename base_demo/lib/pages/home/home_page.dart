@@ -70,23 +70,25 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: HomePageRouteType.values
-          .map<Widget>((pageType) => Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                      onPressed: () => _onShowPage(context, pageType),
-                      child: Text(
-                        _getPageTypeText(pageType),
-                        style: const TextStyle(fontSize: 18),
-                      )),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                ],
-              ))
-          .toList(),
+    return ListView.builder(
+      itemExtent: 60,
+      itemCount: HomePageRouteType.values.length,
+      itemBuilder: (BuildContext context, int index) {
+        final pageType = HomePageRouteType.values[index];
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+                onPressed: () => _onShowPage(context, pageType),
+                child: Text(
+                  _getPageTypeText(pageType),
+                  // style: const TextStyle(fontSize: 18),
+                )),
+
+                
+          ],
+        );
+      },
     );
   }
 
@@ -95,11 +97,13 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _getWidgetPage(HomePageRouteType pageRouteType) {
+    final title = _getPageTypeText(pageRouteType);
+
     switch (pageRouteType) {
       case HomePageRouteType.baseWidget:
-        return const BaseContainerPage();
+        return BaseContainerPage(title:title);
       case HomePageRouteType.layoutWidget:
-        return const LayoutContainerPage();
+        return LayoutContainerPage(title:title);
 
       case HomePageRouteType.scrollWidget:
         return const ScrollContainerPage();
@@ -107,17 +111,17 @@ class HomePage extends StatelessWidget {
         return const FunctionalContainerPage();
 
       case HomePageRouteType.animationWidget:
-        return const LayoutContainerPage();
+        return LayoutContainerPage(title:title);
       case HomePageRouteType.customWidget:
         return const CustomWidgetContainerPage();
 
       case HomePageRouteType.fileWidget:
-        return const LayoutContainerPage();
+        return LayoutContainerPage(title:title);
       case HomePageRouteType.netWidget:
-        return const LayoutContainerPage();
+        return LayoutContainerPage(title:title);
 
       case HomePageRouteType.extensionWidget:
-        return const LayoutContainerPage();
+        return LayoutContainerPage(title:title);
 
       default:
         return Text('没有该模块:$pageRouteType');

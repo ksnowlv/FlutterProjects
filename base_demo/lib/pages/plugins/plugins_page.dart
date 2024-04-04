@@ -4,14 +4,14 @@ import 'package:base_demo/pages/plugins/round_checkbox_page.dart';
 import 'package:base_demo/pages/plugins/video_player_page.dart';
 import 'package:flutter/material.dart';
 
-  enum PluginType {
-  videoPlayer,//https://pub-web.flutter-io.cn/packages/video_player
-  imageCompress,//https://pub-web.flutter-io.cn/packages/flutter_image_compress
-  autoRoute,//https://pub-web.flutter-io.cn/packages/auto_route
-  audioPlayers,//https://pub-web.flutter-io.cn/packages/audioplayers
-  flutterAnimate,//https://pub-web.flutter-io.cn/packages/flutter_animate
-  slidingUpPanel,//https://pub-web.flutter-io.cn/packages/sliding_up_panel
-  localAuth,//https://pub-web.flutter-io.cn/packages/local_auth
+enum PluginType {
+  videoPlayer, //https://pub-web.flutter-io.cn/packages/video_player
+  imageCompress, //https://pub-web.flutter-io.cn/packages/flutter_image_compress
+  autoRoute, //https://pub-web.flutter-io.cn/packages/auto_route
+  audioPlayers, //https://pub-web.flutter-io.cn/packages/audioplayers
+  flutterAnimate, //https://pub-web.flutter-io.cn/packages/flutter_animate
+  slidingUpPanel, //https://pub-web.flutter-io.cn/packages/sliding_up_panel
+  localAuth, //https://pub-web.flutter-io.cn/packages/local_auth
   roundcheckbox, //https://pub-web.flutter-io.cn/packages/roundcheckbox
 }
 
@@ -20,12 +20,11 @@ class PluginsPage extends StatefulWidget {
   const PluginsPage({super.key, required this.title});
 
   @override
-   State<PluginsPage> createState() => _PluginsPageState();
+  State<PluginsPage> createState() => _PluginsPageState();
 }
 
 class _PluginsPageState extends State<PluginsPage> {
-
-   final Map<PluginType, String> _pluginTypeMap = {
+  final Map<PluginType, String> _pluginTypeMap = {
     PluginType.videoPlayer: '视频播放组件',
     PluginType.imageCompress: '图片压缩组件',
     PluginType.autoRoute: '自动路由组件',
@@ -34,38 +33,38 @@ class _PluginsPageState extends State<PluginsPage> {
     PluginType.slidingUpPanel: '滑动面板组件',
     PluginType.localAuth: '本地生物识别和设备密码验证组件',
     PluginType.roundcheckbox: "roundcheckbox"
-   // PluginTypePage.fileWidget: '文件组件',
-   // HomePageRouteType.netWidget: '网络组件',
-   // HomePageRouteType.extensionWidget: '包和插件组件',
+    // PluginTypePage.fileWidget: '文件组件',
+    // HomePageRouteType.netWidget: '网络组件',
+    // HomePageRouteType.extensionWidget: '包和插件组件',
   };
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:  ListView(
-      children: PluginType.values
-          .map<Widget>((pageType) => Column(
+      body: ListView.builder(
+        itemExtent: 60,
+        itemCount: PluginType.values.length,
+        itemBuilder: (BuildContext context, int index) {
+          final pageType = PluginType.values[index];
+          return   Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
                       onPressed: () => _onShowPage(context, pageType),
                       child: Text(
                         _getPageTypeText(pageType),
-                        style: const TextStyle(fontSize: 18),
                       )),
                   const SizedBox(
                     height: 20,
                   ),
                 ],
-              ))
-          .toList(),
-    )
+              );
+        },
+      ),
     );
   }
 
-
-  void _onShowPage(
-      BuildContext context, PluginType pluginType) async {
+  void _onShowPage(BuildContext context, PluginType pluginType) async {
     if (!context.mounted) {
       return;
     }
@@ -79,11 +78,11 @@ class _PluginsPageState extends State<PluginsPage> {
     return _pluginTypeMap[pluginType] ?? "没有该模块";
   }
 
-
   Widget _getWidgetPage(PluginType pluginType) {
     switch (pluginType) {
       case PluginType.videoPlayer:
-        return VideoPlayerPage(pageTitle: _getPageTypeText(PluginType.videoPlayer));
+        return VideoPlayerPage(
+            pageTitle: _getPageTypeText(PluginType.videoPlayer));
       case PluginType.autoRoute:
         return const Text('2');
 
@@ -101,13 +100,10 @@ class _PluginsPageState extends State<PluginsPage> {
       case PluginType.localAuth:
         return const Text('5');
       case PluginType.roundcheckbox:
-      return const RoundCheckboxPage();  
+        return const RoundCheckboxPage();
 
-    
       default:
         return Text('没有该模块:$pluginType');
     }
   }
-
-
 }

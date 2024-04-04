@@ -2,7 +2,8 @@ import 'package:base_demo/pages/widget/widget_page.dart';
 import 'package:flutter/material.dart';
 
 class BaseContainerPage extends StatefulWidget {
-  const BaseContainerPage({super.key});
+  final String title;
+  const BaseContainerPage({super.key, required this.title});
 
   @override
   State<BaseContainerPage> createState() => _BaseContainerPageState();
@@ -13,25 +14,30 @@ class _BaseContainerPageState extends State<BaseContainerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(''),
+        title: Text(widget.title),
       ),
-      body: ListView(
+      body: ListView.builder(
+        itemExtent: 60,
+        itemCount: WidgetPageType.values.length,
         padding: const EdgeInsets.all(20),
-        children: WidgetPageType.values
-            .map<Widget>((pageType) => Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                        child: Text(_getPageTypeText(pageType)),
-                        onPressed: () {
-                          _showWidgetPage(context, pageType);
-                        }),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                  ],
-                ))
-            .toList(),
+        itemBuilder: (context, index) {
+          final pageType = WidgetPageType.values[index];
+
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                  child: Text(_getPageTypeText(pageType)),
+                  onPressed: () {
+                    _showWidgetPage(context, pageType);
+                  }
+                  ),
+              const SizedBox(
+                height: 20,
+              ),
+            ],
+          );
+        },
       ),
     );
   }

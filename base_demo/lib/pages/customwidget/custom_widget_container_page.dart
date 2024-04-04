@@ -1,11 +1,13 @@
 import 'package:base_demo/pages/customwidget/custom_widget_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class CustomWidgetContainerPage extends StatefulWidget {
   const CustomWidgetContainerPage({super.key});
 
   @override
-  State<CustomWidgetContainerPage> createState() => _CustomWidgetContainerPageState();
+  State<CustomWidgetContainerPage> createState() =>
+      _CustomWidgetContainerPageState();
 }
 
 class _CustomWidgetContainerPageState extends State<CustomWidgetContainerPage> {
@@ -15,27 +17,31 @@ class _CustomWidgetContainerPageState extends State<CustomWidgetContainerPage> {
       appBar: AppBar(
         title: const Text('自定义组件'),
       ),
-      body: ListView(
+      body: ListView.builder(
+        itemExtent: 60,
         padding: const EdgeInsets.all(20),
-        children: CustomWidgetPageType.values
-            .map<Widget>((pageType) => Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                        child: Text(_titleFromPageType(pageType)),
-                        onPressed: () {
-                          _showWidgetPage(context, pageType);
-                        }),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                  ],
-                ))
-            .toList(),
+        itemCount: CustomWidgetPageType.values.length,
+        itemBuilder: (BuildContext context, int index) {
+          final pageType = CustomWidgetPageType.values[index];
+          return _buildListItem(pageType, context);
+        },
       ),
     );
   }
 
+  Widget _buildListItem(CustomWidgetPageType pageType, BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ElevatedButton(
+          child: Text(_titleFromPageType(pageType)),
+          onPressed: () {
+            _showWidgetPage(context, pageType);
+          },
+        ),
+      ],
+    );
+  }
 
   String _titleFromPageType(CustomWidgetPageType pageType) {
     Map<CustomWidgetPageType, String> titleMap = {
@@ -51,18 +57,17 @@ class _CustomWidgetContainerPageState extends State<CustomWidgetContainerPage> {
     return titleMap[pageType] ?? "没有该模块";
   }
 
-  void _showWidgetPage(BuildContext context, CustomWidgetPageType pageType) async {
+  void _showWidgetPage(
+      BuildContext context, CustomWidgetPageType pageType) async {
     if (!context.mounted) {
       return;
     }
 
-    final result = 
+    final result =
         await Navigator.push(context, MaterialPageRoute(builder: (context) {
-        
       return CustomWidgetPage(
           pageType: pageType, pageTitle: _titleFromPageType(pageType));
-    }
-    ));
+    }));
 
     debugPrint('result: $result');
   }

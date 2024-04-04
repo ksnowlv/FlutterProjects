@@ -17,23 +17,22 @@ class _ScrollContainerPageState extends State<ScrollContainerPage> {
       appBar: AppBar(
         title: const Text(''),
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(20),
-        children: ScrollPageType.values
-            .map<Widget>((pageType) => Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                        child: Text(_titleFromPageType(pageType)),
-                        onPressed: () {
-                          _showWidgetPage(context, pageType);
-                        }),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                  ],
-                ))
-            .toList(),
+      body: ListView.builder(
+        itemExtent: 60,
+        itemCount: ScrollPageType.values.length,
+        itemBuilder: (BuildContext context, int index) {
+          final pageType = ScrollPageType.values[index];
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                  child: Text(_titleFromPageType(pageType)),
+                  onPressed: () {
+                    _showWidgetPage(context, pageType);
+                  }),
+            ],
+          );
+        },
       ),
     );
   }
@@ -58,19 +57,17 @@ class _ScrollContainerPageState extends State<ScrollContainerPage> {
       return;
     }
 
-    final result = 
+    final result =
         await Navigator.push(context, MaterialPageRoute(builder: (context) {
-
-          if(pageType == ScrollPageType.tabBarView ) {
-            return const MainTabBarView();
-          } else if (pageType == ScrollPageType.nestedScrollView) {
-            return const MyNestedScrollViewPage();
-          }
+      if (pageType == ScrollPageType.tabBarView) {
+        return const MainTabBarView();
+      } else if (pageType == ScrollPageType.nestedScrollView) {
+        return const MyNestedScrollViewPage();
+      }
 
       return ScrollPage(
           pageType: pageType, pageTitle: _titleFromPageType(pageType));
-    }
-    ));
+    }));
 
     debugPrint('result: $result');
   }

@@ -2,7 +2,8 @@ import 'package:base_demo/pages/layout/layout_page.dart';
 import 'package:flutter/material.dart';
 
 class LayoutContainerPage extends StatefulWidget {
-  const LayoutContainerPage({super.key});
+  final String title;
+  const LayoutContainerPage({super.key, required this.title});
 
   @override
   State<LayoutContainerPage> createState() => _LayoutContainerPageState();
@@ -22,30 +23,34 @@ class _LayoutContainerPageState extends State<LayoutContainerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('布局类组件'),
+        title: Text(widget.title),
       ),
       body: Center(
-        child: ListView(
+        child: ListView.builder(
+          itemExtent: 60,
           padding: const EdgeInsets.all(20.0),
-          children: LayoutPageType.values
-              .map<Widget>(
-                (pageType) => Column(
+          itemCount: LayoutPageType.values.length ,
+          itemBuilder: (BuildContext context, int index) { 
+            final pageType = LayoutPageType.values[index];
+            return Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
                       onPressed: () => _showLayoutPage(context, pageType),
                       child: Text(
                         _getPageTypeText(pageType),
-                        style: const TextStyle(fontSize: 18),
                       ),
                     ),
                     const SizedBox(
                       height: 20,
                     )
                   ],
-                ),
-              )
-              .toList(),
+                );
+
+           },
+          
+              
+             
         ),
       ),
     );
