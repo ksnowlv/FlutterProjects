@@ -1,8 +1,7 @@
-import 'package:base_demo/dialogs/dialog_page.dart';
 import 'package:base_demo/pages/customwidget/gradient_button_route.dart';
+import 'package:base_demo/pages/customwidget/gradient_circular_progress_route.dart';
 import 'package:base_demo/pages/functional/color_theme_widget.dart';
 import 'package:base_demo/pages/functional/future_stream_builder_widget.dart';
-import 'package:base_demo/pages/functional/pop_scop_widget.dart';
 import 'package:base_demo/pages/functional/shared_data_widget.dart';
 import 'package:base_demo/pages/functional/state_shared_widget.dart';
 import 'package:base_demo/pages/mine/value_listenable_builder_page.dart';
@@ -14,6 +13,7 @@ enum CustomWidgetPageType {
   turnBox, //自定义TurnBox
   customPaint, //CustomPaint
   customCheckbox, //CustomCheckbox
+  gradientCircularProgressIndicator,//圆形背景渐变进度条
   doneWidget, //DoneWidget
   waterMark, //水印组件WaterMark
 }
@@ -47,7 +47,9 @@ class _CustomWidgetPageState extends State<CustomWidgetPage> {
       case CustomWidgetPageType.turnBox:
         return const InheritedContainerWidget();
       case CustomWidgetPageType.customPaint:
-        return const StateSharedWidget();  
+        return const StateSharedWidget(); 
+      case CustomWidgetPageType.gradientCircularProgressIndicator:
+      return const GradientCircularProgressRoute(); 
 
       case CustomWidgetPageType.customCheckbox:
         return const ColorThemeWidget();
