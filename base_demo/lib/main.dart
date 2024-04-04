@@ -5,6 +5,7 @@ import 'package:base_demo/pages/main/main_page.dart';
 import 'package:base_demo/widgets/provider_widget.dart';
 import 'package:base_demo/routes/router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart' as flutter_riverpod ;
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
@@ -21,7 +22,7 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => CounterModel()),
-        ChangeNotifierProvider(create: (context) => ThemeManager() ),
+        ChangeNotifierProvider(create: (context) => ThemeManager()),
       ],
       child: const MyApp(),
     ),
@@ -39,9 +40,12 @@ class MyApp extends StatelessWidget {
     //   home: HomePage(title: 'home page'),
     // );
     final themeManager = Provider.of<ThemeManager>(context);
-    return MaterialApp(
+
+    //ProviderScope 提供了创建和管理 Provider 的上下文，这些 Provider 用于管理状态和数据
+    return flutter_riverpod.ProviderScope(
+        child: MaterialApp(
       title: 'Flutter Base Demo',
-      theme:themeManager.theme,
+      theme: themeManager.theme,
       //  ThemeData(
       //   // This is the theme of your application.
       //   //
@@ -62,20 +66,12 @@ class MyApp extends StatelessWidget {
       //   platform: TargetPlatform.iOS,
       //   useMaterial3: true,
       // ),
-  
+
       home: const MainPage(title: "Main page"),
-      // home: const HomeScreen(),
-      // home: ScrollControllerPage(),
-      //home: const OrderListPage(),
-      // home: const MainTabBarView(),
-      // home: const MyNestedScrollViewPage(),
-      //home: const DialogPage(),
-      //home: const CalendarScreenPage(),
-      // home: const PullToRefreshPage(),
       initialRoute: '/',
       onGenerateRoute: XRouter.generateRoute,
       builder: FToastBuilder(),
-    );
+    ));
   }
 }
 

@@ -2,6 +2,7 @@ import 'package:base_demo/bloc/counter_cubit.dart';
 import 'package:base_demo/pages/mine/stateful_builder_page.dart';
 import 'package:base_demo/pages/mine/task/controller/task_controller.dart';
 import 'package:base_demo/pages/mine/user/page_route/user_page_route.dart';
+import 'package:base_demo/pages/mine/user_model/view/user_model_page.dart';
 import 'package:base_demo/pages/mine/value_listenable_builder_page.dart';
 import 'package:base_demo/widgets/counter_widget.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,7 @@ class _MinePageState extends State<MinePage> {
     return Center(
         child: SingleChildScrollView(
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           ElevatedButton(
               onPressed: () => _onShowNewMVC(context),
@@ -35,7 +37,14 @@ class _MinePageState extends State<MinePage> {
             height: 20,
           ),
           ElevatedButton(
-              onPressed: () => _onShowMVVM(context), child: const Text('MVVM')),
+              onPressed: () => _onShowMVVM(context),
+              child: const Text('MVVM之ChangeNotifier+Provider')),
+          const SizedBox(
+            height: 20,
+          ),
+          ElevatedButton(
+              onPressed: () => _onShowMVVMFlutterRiverpod(context),
+              child: const Text('MVVM之FlutterRiverpod')),
           const SizedBox(
             height: 20,
           ),
@@ -43,21 +52,14 @@ class _MinePageState extends State<MinePage> {
               onPressed: () => _onShowStatefulBuilderPage(context),
               child: const Text('StatefulBuilder局部刷新')),
           const SizedBox(
-            height: 20,
+            height: 10,
           ),
           ElevatedButton(
               onPressed: () => _onShowValueListenableBuilderPage(context),
-              child: const Text('ValueListenableBuilder局部刷新')),
+              child: const Text('ValueListenableBuilder局部刷新')),  
         ],
       ),
-    )
-    );
-    
-
-    return BlocProvider(
-      create: (context) => CounterCubit(0),
-      child: const Center(child: CounterWidget()),
-    );
+    ));
   }
 
   void _onShowNewMVC(BuildContext context) async {
@@ -67,6 +69,16 @@ class _MinePageState extends State<MinePage> {
 
     final result = await Navigator.push(context,
         MaterialPageRoute(builder: (context) => const TaskController()));
+    debugPrint('result:$result');
+  }
+
+  void _onShowMVVMFlutterRiverpod(BuildContext context) async {
+    if (!context.mounted) {
+      return;
+    }
+
+    final result = await Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const UserModelPage()));
     debugPrint('result:$result');
   }
 
