@@ -20,8 +20,8 @@ class _PopScopWidgetState extends State<PopScopWidget> {
         }
         _exitCurPage();
       },
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      child: Center(
+          child: Column(
         children: [
           const Text('1秒内连续按两次返回键退出'),
           ElevatedButton(
@@ -30,7 +30,7 @@ class _PopScopWidgetState extends State<PopScopWidget> {
               },
               child: const Text('1秒内连续按两次返回键退出'))
         ],
-      ),
+      )),
     );
   }
 

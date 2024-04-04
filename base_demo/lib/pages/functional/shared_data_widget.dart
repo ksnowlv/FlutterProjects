@@ -72,7 +72,7 @@ class InheritedContainerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyInheritedWidgetProvider(child: Builder(
       builder: (context) {
-        return Column(
+        return Center(child:  Column(
           children: [
             const InheritedDemoWidget(),
             ElevatedButton(
@@ -82,7 +82,7 @@ class InheritedContainerWidget extends StatelessWidget {
                 },
                 child: const Text('更新SharedDataWidget中的数据')),
           ],
-        );
+        ));
       },
     ));
   }

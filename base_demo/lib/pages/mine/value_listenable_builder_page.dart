@@ -31,7 +31,7 @@ class _ValueListenableBuilderPageState
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             ValueListenableBuilder(
               valueListenable: _person,

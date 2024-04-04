@@ -284,7 +284,7 @@ class DialogPageState extends State<DialogPage> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             ElevatedButton(
                 onPressed: () {

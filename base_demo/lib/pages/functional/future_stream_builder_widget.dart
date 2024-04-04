@@ -13,7 +13,7 @@ class _FutureStreamBuilderWidgetState extends State<FutureStreamBuilderWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Center(
         child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -44,10 +44,7 @@ class _FutureStreamBuilderWidgetState extends State<FutureStreamBuilderWidget> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      setState(() {
-                        
-                      });
-                    
+                      setState(() {});
                     },
                     child: const Text('FutureBuilder重新加载'), // 显示重新加载数据的按钮
                   ),
@@ -89,9 +86,7 @@ class _FutureStreamBuilderWidgetState extends State<FutureStreamBuilderWidget> {
                   Text('data:$result'),
                   ElevatedButton(
                       onPressed: () {
-                        setState(() {
-                          
-                        });
+                        setState(() {});
                       },
                       child: const Text('StreamBuilder重新加载~')),
                 ],

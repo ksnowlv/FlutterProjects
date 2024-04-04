@@ -12,7 +12,7 @@ class StateSharedWidget extends StatefulWidget {
 class _StateSharedWidgetState extends State<StateSharedWidget> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Center(child:  Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         const Text('---使用Event Bus进行通信---'),
@@ -28,7 +28,7 @@ class _StateSharedWidgetState extends State<StateSharedWidget> {
           child: const Text('使用Provider进行通信'),
         ),
       ],
-    );
+    ));
   }
 
   void _showUserPageRoute(BuildContext context) async {

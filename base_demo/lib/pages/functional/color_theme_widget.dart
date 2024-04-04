@@ -12,7 +12,8 @@ class ColorThemeWidget extends StatefulWidget {
 class _ColorThemeWidgetState extends State<ColorThemeWidget> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Center(
+        child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         const Text(
@@ -40,17 +41,15 @@ class _ColorThemeWidgetState extends State<ColorThemeWidget> {
             ],
           ),
         ),
-
-        
-        const SizedBox(height: 20,), 
-
+        const SizedBox(
+          height: 20,
+        ),
         ElevatedButton(
-          onPressed: () {
-            Provider.of<ThemeManager>(context, listen: false).switchTheme();
-        }, 
-        child: const Text('切换主题'))
+            onPressed: () {
+              Provider.of<ThemeManager>(context, listen: false).switchTheme();
+            },
+            child: const Text('切换主题'))
       ],
-    );
+    ));
   }
 }
-
