@@ -1,4 +1,6 @@
 import 'package:base_demo/bloc/counter_cubit.dart';
+import 'package:base_demo/pages/mine/person/person_info_controller.dart';
+import 'package:base_demo/pages/mine/person/person_info_view.dart';
 import 'package:base_demo/pages/mine/stateful_builder_page.dart';
 import 'package:base_demo/pages/mine/task/controller/task_controller.dart';
 import 'package:base_demo/pages/mine/user/page_route/user_page_route.dart';
@@ -30,6 +32,14 @@ class _MinePageState extends State<MinePage> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+
+          ElevatedButton(
+              onPressed: () => _onShowMVC(context),
+              child: const Text('MVC')),
+          const SizedBox(
+            height: 20,
+          ),
+
           ElevatedButton(
               onPressed: () => _onShowNewMVC(context),
               child: const Text('New MVC')),
@@ -61,6 +71,17 @@ class _MinePageState extends State<MinePage> {
       ),
     ));
   }
+
+    void _onShowMVC(BuildContext context) async {
+    if (!context.mounted) {
+      return;
+    }
+
+    final result = await Navigator.push(context,
+        MaterialPageRoute(builder: (context) => PersonInfoView(controller: PersonInfoController(),)));
+    debugPrint('result:$result');
+  }
+
 
   void _onShowNewMVC(BuildContext context) async {
     if (!context.mounted) {
