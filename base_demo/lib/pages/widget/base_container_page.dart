@@ -50,6 +50,8 @@ class _BaseContainerPageState extends State<BaseContainerPage> {
       WidgetPageType.switchCheckbox: '单选开关/复选框',
       WidgetPageType.textField: '输入控件',
       WidgetPageType.progressIndicator: '进度指示器',
+      WidgetPageType.table: '表格',
+      WidgetPageType.menuBar: '菜单栏',
     };
 
     return titleMap[pageType] ?? "没有该布局";

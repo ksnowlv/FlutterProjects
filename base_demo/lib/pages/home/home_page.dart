@@ -1,6 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:base_demo/pages/customwidget/custom_widget_container_page.dart';
 import 'package:base_demo/pages/functional/functional_container_page.dart';
+import 'package:base_demo/pages/home/file_page.dart';
+import 'package:base_demo/pages/keys/keys_container_page.dart';
+import 'package:base_demo/pages/net_page/net_container_page.dart';
 import 'package:base_demo/pages/scroll_widget/scroll_container_page.dart';
 import 'package:base_demo/pages/widget/base_container_page.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +21,7 @@ enum HomePageRouteType {
   fileWidget, // 文件组件
   netWidget, //网络组件
   extensionWidget, //包和插件组件
+  keys, //Flutter Keys
 }
 
 class HomePage extends StatelessWidget {
@@ -31,6 +35,7 @@ class HomePage extends StatelessWidget {
     HomePageRouteType.fileWidget: '文件组件',
     HomePageRouteType.netWidget: '网络组件',
     HomePageRouteType.extensionWidget: '包和插件组件',
+    HomePageRouteType.keys: 'Flutter Keys',
   };
 
   HomePage({
@@ -58,14 +63,20 @@ class HomePage extends StatelessWidget {
   }
 
   void _onShowPage(
-      BuildContext context, HomePageRouteType pageRouteType) async {
-    if (!context.mounted) {
+    BuildContext context, HomePageRouteType pageRouteType) async {
+
+    final routerName = _routerFromPageType(pageRouteType);
+    final title = _titleFromPageType(pageRouteType);
+  
+    if (routerName.isEmpty|| title.isEmpty) {
       return;
     }
 
-    final result = await Navigator.push(context,
-        MaterialPageRoute(builder: (context) => _getWidgetPage(pageRouteType)));
-    debugPrint('result:$result');
+    if (!context.mounted) {
+      return;
+    }
+    
+    await Navigator.pushNamed(context, routerName, arguments: {"title": title, "pageType": pageRouteType.name,});
   }
 
   @override
@@ -81,7 +92,7 @@ class HomePage extends StatelessWidget {
             ElevatedButton(
                 onPressed: () => _onShowPage(context, pageType),
                 child: Text(
-                  _getPageTypeText(pageType),
+                  _titleFromPageType(pageType),
                   // style: const TextStyle(fontSize: 18),
                 )),
           ],
@@ -90,43 +101,41 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  String _getPageTypeText(HomePageRouteType pageRouteType) {
+  String _titleFromPageType(HomePageRouteType pageRouteType) {
     return _widgetMap[pageRouteType] ?? "没有该模块";
   }
 
-  Widget _getWidgetPage(HomePageRouteType pageRouteType) {
-    final title = _getPageTypeText(pageRouteType);
+   String _routerFromPageType(HomePageRouteType pageRouteType) {
 
     switch (pageRouteType) {
       case HomePageRouteType.baseWidget:
-        return BaseContainerPage(title: title);
+        return '/home/baseWidget';
       case HomePageRouteType.layoutWidget:
-        return LayoutContainerPage(title: title);
+        return  '/home/layoutWidget';
 
       case HomePageRouteType.scrollWidget:
-        return ScrollContainerPage(
-          title: title,
-        );
+        return '/home/scrollWidget';
+       
       case HomePageRouteType.functionalWidget:
-        return FunctionalContainerPage(
-          title: title,
-        );
+        return '/home/functionalWidget';
 
       case HomePageRouteType.animationWidget:
-        return LayoutContainerPage(title: title);
+        return '/home/animationWidget';
       case HomePageRouteType.customWidget:
-        return CustomWidgetContainerPage(title: title);
-
+        return '/home/customWidget';
+      
       case HomePageRouteType.fileWidget:
-        return LayoutContainerPage(title: title);
+        return '/home/fileWidget';
       case HomePageRouteType.netWidget:
-        return LayoutContainerPage(title: title);
+        return '/home/netWidget';
 
       case HomePageRouteType.extensionWidget:
-        return LayoutContainerPage(title: title);
+        return '/home/extensionWidget';
+      case HomePageRouteType.keys:
+        return '/home/keys';  
 
       default:
-        return Text('没有该模块:$pageRouteType');
+        return '没有该模块:$pageRouteType';
     }
   }
 }
