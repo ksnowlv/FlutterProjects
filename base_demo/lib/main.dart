@@ -1,7 +1,9 @@
 import 'package:base_demo/common/hive_manage.dart';
 import 'package:base_demo/common/logger.dart';
+import 'package:base_demo/common/route_generator.dart';
 import 'package:base_demo/common/theme_manager.dart';
 import 'package:base_demo/pages/main/main_page.dart';
+import 'package:base_demo/pages/plugins/plugins_page.dart';
 import 'package:base_demo/widgets/provider_widget.dart';
 import 'package:base_demo/routes/router.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart' as flutter_riverpod ;
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
   XLogger.getLogger().d("main init");
@@ -23,6 +26,7 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (context) => CounterModel()),
         ChangeNotifierProvider(create: (context) => ThemeManager()),
+        BlocProvider(create: (context) => PluginsPageCubit()),
       ],
       child: const MyApp(),
     ),
@@ -69,11 +73,24 @@ class MyApp extends StatelessWidget {
 
       home: const MainPage(title: "Main page"),
       initialRoute: '/',
-      onGenerateRoute: XRouter.generateRoute,
+      onGenerateRoute: RouteGenerator.generateRoute,
       builder: FToastBuilder(),
     ));
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+//
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
