@@ -8,7 +8,7 @@ class UserModelPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userViewModel = ref.watch(userViewModelProvider);
-  
+    
     return Scaffold(
       appBar: AppBar(
         title: const Text(''),
@@ -16,14 +16,14 @@ class UserModelPage extends ConsumerWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text('viewModel:${userViewModel.userModel}'),
+          Text('viewModel:${userViewModel}'),
           const SizedBox(
             height: 20,
           ),
           ElevatedButton(
               onPressed: () {
-                //ref.read(userViewModelProvider.notifier).updateName('kk');
-                userViewModel.updateName('kksnow');
+                //ref.read(userViewModelProvider).updateName('kk');
+                ref.read(userViewModelProvider.notifier).updateName('kksnow');
               },
               child: const Text('更新姓名')),
           const SizedBox(
@@ -31,8 +31,9 @@ class UserModelPage extends ConsumerWidget {
           ),
           ElevatedButton(
               onPressed: () {
-                //ref.read(userViewModelProvider.notifier).updateAge(12);
-                userViewModel.updateAge(1+ userViewModel.userModel.age);
+                //ref.read(userViewModelProvider).updateAge(userViewModel.userModel.age + 1);
+                //userViewModel.updateAge(1+ userViewModel.userModel.age);
+                ref.read(userViewModelProvider.notifier).updateAge(userViewModel.age + 1);
               },
               child: const Text('更新年龄')),
           const SizedBox(
