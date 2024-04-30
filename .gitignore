@@ -1,1 +1,12 @@
 pubspec.lock
+flutter_module/iOS-frameworks_with_cocoapods/Debug
+flutter_module/iOS_frameworks/Debug
+flutter_module/iOS_frameworks/Release/App.xcframework/Info.plist
+flutter_module/iOS_frameworks/Release/App.xcframework/ios-arm64/App.framework/App
+flutter_module/iOS_frameworks/Release/App.xcframework/ios-arm64/App.framework/Info.plist
+flutter_module/iOS_frameworks/Release/App.xcframework/ios-arm64/App.framework/_CodeSignature/CodeResources
+flutter_module/iOS_frameworks/Release/App.xcframework/ios-arm64/App.framework/flutter_assets/AssetManifest.bin
+flutter_module/iOS_frameworks/Release/App.xcframework/ios-arm64/App.framework/flutter_assets/AssetManifest.json
+flutter_module/iOS_frameworks/Release/App.xcframework/ios-arm64/App.framework/flutter_assets/FontManifest.json
+flutter_module/iOS_frameworks/Release
+flutter_module/iOS-frameworks_with_cocoapods/Release

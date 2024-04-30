@@ -1,0 +1,96 @@
+Flutter crash report.
+Please report a bug at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter build ios-framework --output=/MyApp/Flutter/
+
+## exception
+
+FileSystemException: FileSystemException: Creation failed, path = '/MyApp' (OS Error: Read-only file system, errno = 30)
+
+```
+#0      _Directory.createSync (dart:io/directory_impl.dart:124:7)
+#1      _Directory.createSync (dart:io/directory_impl.dart:119:16)
+#2      _Directory.createSync (dart:io/directory_impl.dart:119:16)
+#3      _Directory.createSync (dart:io/directory_impl.dart:119:16)
+#4      ForwardingDirectory.createSync (package:file/src/forwarding/forwarding_directory.dart:20:16)
+#5      ErrorHandlingDirectory.createSync.<anonymous closure> (package:flutter_tools/src/base/error_handling_io.dart:426:22)
+#6      _runSync (package:flutter_tools/src/base/error_handling_io.dart:587:14)
+#7      ErrorHandlingDirectory.createSync (package:flutter_tools/src/base/error_handling_io.dart:425:12)
+#8      copyDirectory (package:flutter_tools/src/base/file_system.dart:131:13)
+#9      BuildIOSFrameworkCommand._produceFlutterFramework (package:flutter_tools/src/commands/build_ios_framework.dart:419:7)
+#10     BuildIOSFrameworkCommand.runCommand (package:flutter_tools/src/commands/build_ios_framework.dart:263:15)
+<asynchronous suspension>
+#11     FlutterCommand.run.<anonymous closure> (package:flutter_tools/src/runner/flutter_command.dart:1394:27)
+<asynchronous suspension>
+#12     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:153:19)
+<asynchronous suspension>
+#13     CommandRunner.runCommand (package:args/command_runner.dart:212:13)
+<asynchronous suspension>
+#14     FlutterCommandRunner.runCommand.<anonymous closure> (package:flutter_tools/src/runner/flutter_command_runner.dart:360:9)
+<asynchronous suspension>
+#15     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:153:19)
+<asynchronous suspension>
+#16     FlutterCommandRunner.runCommand (package:flutter_tools/src/runner/flutter_command_runner.dart:300:5)
+<asynchronous suspension>
+#17     run.<anonymous closure>.<anonymous closure> (package:flutter_tools/runner.dart:119:9)
+<asynchronous suspension>
+#18     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:153:19)
+<asynchronous suspension>
+#19     main (package:flutter_tools/executable.dart:94:3)
+<asynchronous suspension>
+```
+
+## flutter doctor
+
+```
+[32m[✓][39m Flutter (Channel beta, 3.21.0-1.0.pre.2, on macOS 14.4.1 23E224 darwin-x64, locale zh-Hans-CN)
+    [32m•[39m Flutter version 3.21.0-1.0.pre.2 on channel beta at /Users/ksnowlv/Documents/FlutterProjects/flutter
+    [32m•[39m Upstream repository git@github.com:flutter/flutter.git
+    [32m•[39m Framework revision c398442c35 (5 weeks ago), 2024-03-12 22:26:24 -0700
+    [32m•[39m Engine revision 0d4f78c952
+    [32m•[39m Dart version 3.4.0 (build 3.4.0-190.1.beta)
+    [32m•[39m DevTools version 2.33.1
+    [32m•[39m Pub download mirror https://pub.flutter-io.cn
+    [32m•[39m Flutter download mirror https://storage.flutter-io.cn
+
+[32m[✓][39m Android toolchain - develop for Android devices (Android SDK version 34.0.0)
+    [32m•[39m Android SDK at /Users/ksnowlv/Library/Android/sdk
+    [32m•[39m Platform android-34, build-tools 34.0.0
+    [32m•[39m ANDROID_HOME = /Users/ksnowlv/Library/Android/sdk
+    [32m•[39m ANDROID_SDK_ROOT = /Users/ksnowlv/Library/Android/sdk
+    [32m•[39m Java binary at: /Applications/Android Studio.app/Contents/jbr/Contents/Home/bin/java
+    [32m•[39m Java version OpenJDK Runtime Environment (build 17.0.7+0-17.0.7b1000.6-10550314)
+    [32m•[39m All Android licenses accepted.
+
+[32m[✓][39m Xcode - develop for iOS and macOS (Xcode 15.3)
+    [32m•[39m Xcode at /Applications/Xcode.app/Contents/Developer
+    [32m•[39m Build 15E204a
+    [32m•[39m CocoaPods version 1.15.2
+
+[32m[✓][39m Chrome - develop for the web
+    [32m•[39m Chrome at /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+
+[32m[✓][39m Android Studio (version 2023.1)
+    [32m•[39m Android Studio at /Applications/Android Studio.app/Contents
+    [32m•[39m Flutter plugin can be installed from:
+      🔨 https://plugins.jetbrains.com/plugin/9212-flutter
+    [32m•[39m Dart plugin can be installed from:
+      🔨 https://plugins.jetbrains.com/plugin/6351-dart
+    [32m•[39m Java version openjdk version "17.0.7" 2023-04-18
+
+[32m[✓][39m VS Code (version 1.88.1)
+    [32m•[39m VS Code at /Applications/Visual Studio Code.app/Contents
+    [32m•[39m Flutter extension version 3.86.0
+
+[32m[✓][39m Connected device (3 available)
+    [32m•[39m iPhone 15 Pro (mobile) • F35779E0-8AA1-4124-BECC-E1945A8E4000 • ios            • com.apple.CoreSimulator.SimRuntime.iOS-17-4 (simulator)
+    [32m•[39m macOS (desktop)        • macos                                • darwin-x64     • macOS 14.4.1 23E224 darwin-x64
+    [32m•[39m Chrome (web)           • chrome                               • web-javascript • Google Chrome 123.0.6312.124
+
+[33m[!][39m Network resources
+    [31m✗[39m An HTTP error occurred while checking "https://github.com/": Connection reset by peer
+
+[33m![39m Doctor found issues in 1 category.
+```

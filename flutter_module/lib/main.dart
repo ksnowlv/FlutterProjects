@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() => runApp(const MyApp());
 
@@ -45,15 +46,60 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  static const methodChannel = MethodChannel('com.example.flutter_channel');
+
+  String name = '';
+  int age = 0;
   int _counter = 0;
+
+  String messageChannelName = '';
+  int messageChannelAge = 0;
+
+  static const messageChannel = BasicMessageChannel<dynamic>(
+    'com.example.flutter_channel_basic_message_channel',
+    StandardMessageCodec(),
+  );
+
+  @override
+  void initState() {
+    super.initState();
+    initMethodChannel();
+    initMessageChannel();
+  }
+
+  void initMethodChannel() {
+    methodChannel.setMethodCallHandler((call) async {
+      debugPrint("Method call: ${call.method}");
+      if (call.method == "openFlutterView") {
+        if (call.arguments.length == 2) {
+          name = call.arguments[0];
+          age = call.arguments[1];
+          setState(() {
+            debugPrint("name: $name, age: $age");
+          });
+        }
+        // Do something with the arguments if needed
+      }
+    });
+  }
+
+  void initMessageChannel() {
+    messageChannel.setMessageHandler((message) async {
+      if (message != null && message is Map) {
+        messageChannelName = message['name'];
+        messageChannelAge = message['age'];
+
+          setState(() {
+            debugPrint("MessageChannel name: $messageChannelName, age: $messageChannelAge");
+          });
+      }
+      // Return an optional reply back to iOS
+      return "Data received by Flutter";
+    });
+  }
 
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
       _counter++;
     });
   }
@@ -76,20 +122,6 @@ class _MyHomePageState extends State<MyHomePage> {
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
@@ -99,6 +131,19 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            const SizedBox(height: 20),
+            Text(' data {name:$name, age:$age} from iOS'),
+            const SizedBox(height: 20),
+            ElevatedButton(
+                onPressed: () => _methodChannelCalliOS(),
+                child: const Text('method channel send data to iOS')),
+            const SizedBox(height: 20),
+            Text(
+                ' data {BasicMessageChannel receive message name:$messageChannelName, age:$messageChannelAge} from iOS'),
+            const SizedBox(height: 20),
+            ElevatedButton(
+                onPressed: () => _messageChannelSendMessageToiOS(),
+                child: const Text('BasicMessageChannel send data to iOS'))
           ],
         ),
       ),
@@ -108,5 +153,41 @@ class _MyHomePageState extends State<MyHomePage> {
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  void _methodChannelCalliOS() async {
+    try {
+      final Map<String, dynamic> arguments = {
+        'message': 'I am air from Flutter',
+        'count': _counter
+      };
+      final String result =
+          await methodChannel.invokeMethod('dataFromFlutter', arguments);
+
+      debugPrint('send data to iOS: $result');
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  void _messageChannelSendMessageToiOS() async {
+    try {
+      final Map<String, dynamic> arguments = {
+        'message': 'BasicMessageChannel I am air from Flutter',
+        'count': _counter
+      };
+      final String result = await messageChannel.send(arguments);
+
+      debugPrint('BasicMessageChannel  send data to iOS: $result');
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    methodChannel.setMethodCallHandler(null);
+    messageChannel.setMessageHandler(null);
   }
 }
