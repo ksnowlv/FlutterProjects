@@ -1,0 +1,40 @@
+pluginManagement {
+    repositories {
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    //repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)表示 Gradle 会优先使用远程仓库，如果在远程仓库找不到依赖项，才会检查项目中的本地仓库
+    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)//表示 Gradle 会优先使用项目中的本地仓库，只有当本地仓库中找不到依赖项时才会去远程仓库查找。
+    //FAIL_ON_PROJECT_REPOS->PREFER_PROJECT,解决Caused by: org.gradle.api.internal.plugins.PluginApplicationException: Failed to apply plugin class 'FlutterPlugin'.
+    repositories {
+        //解决maven库中的android组件无法同步的问题，这块容易卡住，注意
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/nexus/content/repositories/google' }
+
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "flutterlibtest"
+include ':app'
+
+
+//将 flutterlib模块作为子项目添加到宿主应用的settings.gradle 中
+setBinding(new Binding([gradle: this]))
+evaluate(new File(settingsDir.parentFile, 'flutterlib/.android/include_flutter.groovy'))
+
+//把flutterlib显示在Android原生项目中，方便查看代码，调试等。
+include "flutterlib"
+project(':flutterlib').projectDir = new File('../flutterlib')
