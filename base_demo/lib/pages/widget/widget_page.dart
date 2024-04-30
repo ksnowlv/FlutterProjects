@@ -1,7 +1,9 @@
 import 'package:base_demo/pages/widget/button_widget.dart';
 import 'package:base_demo/pages/widget/image_widget.dart';
+import 'package:base_demo/pages/widget/menu_bar_page.dart';
 import 'package:base_demo/pages/widget/progress_indicator_widget.dart';
 import 'package:base_demo/pages/widget/switch_checkBox_widget.dart';
+import 'package:base_demo/pages/widget/table_widget.dart';
 import 'package:base_demo/pages/widget/text_field_widget.dart';
 import 'package:base_demo/pages/widget/text_widget.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +16,8 @@ enum WidgetPageType {
   switchCheckbox, //单选开关,复选框
   textField, //输入控件
   progressIndicator,//进度指示器
+  table,//表格
+  menuBar,//菜单栏
 }
 
 class WidgetPage extends StatefulWidget {
@@ -56,6 +60,11 @@ class _WidgetPageState extends State<WidgetPage> {
         return const TextFieldWidget();
       case WidgetPageType.progressIndicator:
         return const ProgressIndicatorWidget();  
+        case WidgetPageType.table:
+        return const TableWidget();
+
+          case WidgetPageType.menuBar:
+        return const MenuBarPage();
 
       default:
         return const Text('没有该页面');
