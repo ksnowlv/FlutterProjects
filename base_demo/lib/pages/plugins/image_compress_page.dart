@@ -69,6 +69,10 @@ class _ImageCompressPageState extends State<ImageCompressPage> {
     setState(() {
       _imageFile = imgFile;
     });
+
+
+  debugPrint('cacheDirectory:${await FileMgr.instance.getApplicationSupportDirectoryPath()}\n documentsDirectory:${await FileMgr.instance.getDocumentsDirectory()} \n temporaryDirectoryPath:${await FileMgr.instance.getTemporaryDirectoryPath()}');
+
   }
 
   // 1. compress file and get Uint8List
