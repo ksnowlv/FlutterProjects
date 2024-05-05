@@ -3,7 +3,9 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/services.dart' show ByteData, rootBundle;
 
 class AudioPlayersPage extends StatefulWidget {
-  const AudioPlayersPage({super.key});
+  
+  final String title;
+  const AudioPlayersPage({super.key, required this.title});
 
   @override
   State<AudioPlayersPage> createState() => _AudioPlayersPageState();
@@ -72,7 +74,7 @@ class _AudioPlayersPageState extends State<AudioPlayersPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(''),
+        title: Text(widget.title),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
