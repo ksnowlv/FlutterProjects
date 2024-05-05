@@ -1,4 +1,7 @@
 import 'package:base_demo/pages/plugins/audio_players_page.dart';
+import 'package:base_demo/pages/plugins/card_swiper_page.dart';
+import 'package:base_demo/pages/plugins/constraint_layout_page.dart';
+import 'package:base_demo/pages/plugins/crypto_page.dart';
 import 'package:base_demo/pages/plugins/custom_popup_menu_page.dart';
 import 'package:base_demo/pages/plugins/flutter_cache_manager_page.dart';
 import 'package:base_demo/pages/plugins/image_compress_page.dart';
@@ -18,6 +21,9 @@ enum PluginType {
   roundcheckbox, //https://pub-web.flutter-io.cn/packages/roundcheckbox, 
   custom_pop_up_menu,//https://pub-web.flutter-io.cn/packages/custom_pop_up_menu
   flutter_cache_manager,//https://pub-web.flutter-io.cn/packages/flutter_cache_manager
+  flutter_card_swiper,//https://pub-web.flutter-io.cn/packages/flutter_card_swiper
+  flutter_constraintlayout,//https://pub-web.flutter-io.cn/packages/flutter_constraintlayout, 
+  crypto,//https://pub-web.flutter-io.cn/packages/crypto
 }
 
 class PluginsPage extends StatefulWidget {
@@ -29,6 +35,7 @@ class PluginsPage extends StatefulWidget {
 }
 
 class _PluginsPageState extends State<PluginsPage> {
+
   final Map<PluginType, String> _pluginTypeMap = {
     PluginType.videoPlayer: '视频播放组件',
     PluginType.imageCompress: '图片压缩组件',
@@ -40,25 +47,33 @@ class _PluginsPageState extends State<PluginsPage> {
     PluginType.roundcheckbox: "roundcheckbox", 
     PluginType.custom_pop_up_menu: "自定义弹出菜单组件",
     PluginType.flutter_cache_manager: "flutter_cache_manager组件",
+    PluginType.flutter_card_swiper: "flutter_card_swiper组件",
+    PluginType.flutter_constraintlayout: "flutter_constraintlayout组件",
+    PluginType.crypto:"crypto组件",
+  
   };
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PluginsPageCubit, String>(builder: (context, state) {
 
-      if(state == 'videoplayer') {
-        return VideoPlayerPage(pageTitle: "",);
-      } else if (state == 'imagecompress') {
-        return ImageCompressPage();
-      } else if (state == 'audioplayers') {
-        return AudioPlayersPage();
-      } else if (state == 'roundcheckbox') {
-        return RoundCheckboxPage();
-      } else if (state == 'custom_pop_up_menu') {
-        return CustomPopupMenuPage();
-      } else if (state == 'flutter_cache_manager') {
-        return const FlutterCacheManagerPage();
-      }
+      // if(state == 'videoplayer') {
+      //   return const VideoPlayerPage(pageTitle: "",);
+      // } else if (state == 'imagecompress') {
+      //   return const ImageCompressPage();
+      // } else if (state == 'audioplayers') {
+      //   return const AudioPlayersPage();
+      // } else if (state == 'roundcheckbox') {
+      //   return const RoundCheckboxPage();
+      // } else if (state == 'custom_pop_up_menu') {
+      //   return const CustomPopupMenuPage();
+      // } else if (state == 'flutter_cache_manager') {
+      //   return const FlutterCacheManagerPage();
+      // } else if (state == 'flutter_card_swiper') {
+      //   return const CardSwiperPage();
+      // }  else if (state == 'flutter_constraintlayout') {
+      //   return const ConstraintLayoutPage();
+      // } 
 
       return _buildPluginsPages();
   
@@ -70,9 +85,8 @@ class _PluginsPageState extends State<PluginsPage> {
       return;
     }
 
-    final result = await Navigator.push(context,
+    await Navigator.push(context,
         MaterialPageRoute(builder: (context) => _getWidgetPage(pluginType)));
-    debugPrint('result:$result');
   }
 
   String _getPageTypeText(PluginType pluginType) {
@@ -80,18 +94,20 @@ class _PluginsPageState extends State<PluginsPage> {
   }
 
   Widget _getWidgetPage(PluginType pluginType) {
+    debugPrint('_getWidgetPage:$pluginType');
+    final title  = _getPageTypeText(pluginType);
+
     switch (pluginType) {
       case PluginType.videoPlayer:
-        return VideoPlayerPage(
-            pageTitle: _getPageTypeText(PluginType.videoPlayer));
+        return VideoPlayerPage(pageTitle:title);
       case PluginType.autoRoute:
         return const Text('2');
 
       case PluginType.imageCompress:
-        return const ImageCompressPage();
+        return ImageCompressPage(title: title,);
 
       case PluginType.audioPlayers:
-        return const AudioPlayersPage();
+        return AudioPlayersPage(title: title,);
 
       case PluginType.flutterAnimate:
         return const Text('3');
@@ -101,11 +117,18 @@ class _PluginsPageState extends State<PluginsPage> {
       case PluginType.localAuth:
         return const Text('5');
       case PluginType.roundcheckbox:
-        return const RoundCheckboxPage();
+        return RoundCheckboxPage(title: title,);
       case PluginType.custom_pop_up_menu:
-        return const CustomPopupMenuPage();  
+        return CustomPopupMenuPage(title: title,);  
      case PluginType.flutter_cache_manager:
-        return const FlutterCacheManagerPage();       
+        return FlutterCacheManagerPage(title: title,);   
+     case PluginType.flutter_card_swiper:
+
+        return CardSwiperPage(title: title,);  
+     case PluginType.flutter_constraintlayout:
+        return ConstraintLayoutPage(title: title,);   
+     case PluginType.crypto:
+        return CryptoPage(title: title,);        
 
       default:
         return Text('没有该模块:$pluginType');
@@ -136,15 +159,12 @@ class _PluginsPageState extends State<PluginsPage> {
       ),
     );
   }
-
-  //并使用BlocBuilder来动态显示页面
-
 }
 
 
 // 首页模块的Cubit
 class PluginsPageCubit extends Cubit<String> {
- PluginsPageCubit() :super('details');
+ PluginsPageCubit() :super('');
 
  void navigateTo(String page) {
    emit(page);

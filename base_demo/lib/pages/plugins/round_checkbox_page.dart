@@ -3,14 +3,15 @@ import 'package:roundcheckbox/roundcheckbox.dart';
 
 class RoundCheckboxPage extends StatelessWidget {
   static const double roundBoxSize = 50;
+  final String title;
 
-  const RoundCheckboxPage({super.key});
+  const RoundCheckboxPage({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('roundcheckbox'),
+        title: Text(title),
       ),
       body: SizedBox(
         width: double.infinity,

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:popup_menu/popup_menu.dart';
 
 class CustomPopupMenuPage extends StatefulWidget {
-  const CustomPopupMenuPage({super.key});
+  final String title;
+
+  const CustomPopupMenuPage({super.key, required this.title});
 
   @override
   State<CustomPopupMenuPage> createState() => _CustomPopupMenuPageState();
@@ -33,7 +35,7 @@ class _CustomPopupMenuPageState extends State<CustomPopupMenuPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('CustomPopupMenu'),
+          title: Text(widget.title),
         ),
         body: Center(
             child: Column(

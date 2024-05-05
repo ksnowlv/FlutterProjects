@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 class FlutterCacheManagerPage extends StatefulWidget {
-  const FlutterCacheManagerPage({Key? key}) : super(key: key);
+  final String title;
+
+  const FlutterCacheManagerPage({super.key, required this.title});
 
   @override
   State<FlutterCacheManagerPage> createState() =>
@@ -19,7 +21,7 @@ class _FlutterCacheManagerPageState extends State<FlutterCacheManagerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('FlutterCacheManagerPage'),
+          title: Text(widget.title),
         ),
         body: Center(
           child: Column(

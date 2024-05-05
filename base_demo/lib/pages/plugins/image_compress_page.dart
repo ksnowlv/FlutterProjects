@@ -7,7 +7,9 @@ import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 class ImageCompressPage extends StatefulWidget {
-  const ImageCompressPage({super.key});
+  final String title;
+
+  const ImageCompressPage({super.key, required this.title});
 
   @override
   State<ImageCompressPage> createState() => _ImageCompressPageState();
@@ -20,7 +22,7 @@ class _ImageCompressPageState extends State<ImageCompressPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('flutter_image_compress'),
+        title: Text(widget.title),
       ),
       body: SingleChildScrollView(
         child: Column(children: [
