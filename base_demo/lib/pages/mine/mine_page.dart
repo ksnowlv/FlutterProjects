@@ -1,4 +1,5 @@
 import 'package:base_demo/bloc/counter_cubit.dart';
+import 'package:base_demo/pages/login/login_page.dart';
 import 'package:base_demo/pages/mine/person/person_info_controller.dart';
 import 'package:base_demo/pages/mine/person/person_info_view.dart';
 import 'package:base_demo/pages/mine/stateful_builder_page.dart';
@@ -66,7 +67,14 @@ class _MinePageState extends State<MinePage> {
           ),
           ElevatedButton(
               onPressed: () => _onShowValueListenableBuilderPage(context),
-              child: const Text('ValueListenableBuilder局部刷新')),  
+              child: const Text('ValueListenableBuilder局部刷新')), 
+            const SizedBox(
+            height: 10,
+          ),
+          ElevatedButton(
+              onPressed: () => _onShowLogin(context),
+              child: const Text('登陆')),    
+
         ],
       ),
     ));
@@ -134,4 +142,17 @@ class _MinePageState extends State<MinePage> {
             builder: (context) => const ValueListenableBuilderPage()));
     debugPrint('result:$result');
   }
+
+  void _onShowLogin(BuildContext context) async {
+    if (!context.mounted) {
+      return;
+    }
+
+    final result = await Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => const LoginPage()));
+    debugPrint('result:$result');
+  }
 }
+
