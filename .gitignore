@@ -12,3 +12,5 @@ flutter_module/iOS_frameworks/Release
 flutter_module/iOS-frameworks_with_cocoapods/Release
 FlutterCocoaFrameworkTest/FlutterLib/Release
 FlutterCocoaFrameworkTest/FlutterLib/Debug
+.gradle
+.idea
