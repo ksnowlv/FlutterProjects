@@ -5,35 +5,35 @@
     "version": "0.2.0",
     "configurations": [
 
+        {
+            "name": "base_demo",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "base_demo (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "base_demo (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
         // {
-        //     "name": "base_demo",
-        //     "request": "launch",
-        //     "type": "dart"
-        // },
-        // {
-        //     "name": "base_demo (profile mode)",
+        //     "name": "Flutter (Chrome)",
         //     "request": "launch",
         //     "type": "dart",
         //     "flutterMode": "profile"
         // },
         // {
-        //     "name": "base_demo (release mode)",
+        //     "name": "Flutter (macOS)",
         //     "request": "launch",
         //     "type": "dart",
-        //     "flutterMode": "release"
+        //     "flutterMode": "debug"
         // },
-        {
-            "name": "Flutter (Chrome)",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "profile"
-        },
-        {
-            "name": "Flutter (macOS)",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "profile"
-        },
         {
             "name": "Flutter (iPhone 15 pro)",
             "request": "launch",
