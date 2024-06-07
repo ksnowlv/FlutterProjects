@@ -1,3 +1,4 @@
+import 'package:base_demo/pages/plugins/aes_page.dart';
 import 'package:base_demo/pages/plugins/audio_players_page.dart';
 import 'package:base_demo/pages/plugins/card_swiper_page.dart';
 import 'package:base_demo/pages/plugins/constraint_layout_page.dart';
@@ -24,6 +25,7 @@ enum PluginType {
   flutter_card_swiper,//https://pub-web.flutter-io.cn/packages/flutter_card_swiper
   flutter_constraintlayout,//https://pub-web.flutter-io.cn/packages/flutter_constraintlayout, 
   crypto,//https://pub-web.flutter-io.cn/packages/crypto
+  aes,
 }
 
 class PluginsPage extends StatefulWidget {
@@ -50,6 +52,7 @@ class _PluginsPageState extends State<PluginsPage> {
     PluginType.flutter_card_swiper: "flutter_card_swiper组件",
     PluginType.flutter_constraintlayout: "flutter_constraintlayout组件",
     PluginType.crypto:"crypto组件",
+    PluginType.aes:"AES加解密/RSA加解密组件",
   
   };
 
@@ -128,7 +131,9 @@ class _PluginsPageState extends State<PluginsPage> {
      case PluginType.flutter_constraintlayout:
         return ConstraintLayoutPage(title: title,);   
      case PluginType.crypto:
-        return CryptoPage(title: title,);        
+        return CryptoPage(title: title,);   
+     case PluginType.aes:
+        return AesPage(title: title);        
 
       default:
         return Text('没有该模块:$pluginType');

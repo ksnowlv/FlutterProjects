@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ButtonWidget extends StatefulWidget {
+
+  
   const ButtonWidget({super.key});
 
   @override
@@ -8,12 +10,14 @@ class ButtonWidget extends StatefulWidget {
 }
 
 class _ButtonWidgetState extends State<ButtonWidget> {
+  final Key buttonKey = UniqueKey();
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: [
-          ElevatedButton(onPressed: () {}, child: const Text('ElevatedButton')),
+          ElevatedButton(onPressed: () {}, key: buttonKey, child: const Text('ElevatedButton'),),
           TextButton(
             child: const Text('TextButton'),
             onPressed: () {},
